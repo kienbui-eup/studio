@@ -1,0 +1,4162 @@
+{
+  "id": "3bc57ee0-350c-4af9-bb55-df6315f13ba9",
+  "revision": 0,
+  "last_node_id": 72,
+  "last_link_id": 100,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -10000,
+        -2000
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            32,
+            56
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            29,
+            31,
+            53,
+            55
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            37,
+            61
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "realvisxlV50_v50LightningBakedvae.safetensors"
+      ],
+      "title": "Image Model (SDXL)"
+    },
+    {
+      "id": 2,
+      "type": "WanVideoModelLoader",
+      "pos": [
+        -10000,
+        -1850
+      ],
+      "size": [
+        400,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "compile_args",
+          "type": "WANCOMPILEARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "block_swap_args",
+          "type": "BLOCKSWAPARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "lora",
+          "type": "WANVIDLORA",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "vram_management_args",
+          "type": "VRAM_MANAGEMENTARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "extra_model",
+          "type": "VACEPATH",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "fantasytalking_model",
+          "type": "FANTASYTALKINGMODEL",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "multitalk_model",
+          "type": "MULTITALKMODEL",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "fantasyportrait_model",
+          "type": "FANTASYPORTRAITMODEL",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "rms_norm_function",
+          "type": "COMBO",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "links": [
+            85
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors",
+        "fp16_fast",
+        "fp8_e4m3fn",
+        "offload_device",
+        "sdpa"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "WanVideoVAELoader",
+      "pos": [
+        -10000,
+        -1650
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "vae",
+          "type": "WANVAE",
+          "links": [
+            81,
+            88
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "wan_2.1_vae.safetensors",
+        "bf16"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        -10000,
+        -1520
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            79
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "clip_vision_h.safetensors"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "DirectLLMConfig",
+      "pos": [
+        -10000,
+        -1390
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "links": [
+            1,
+            4,
+            8,
+            14,
+            18,
+            27,
+            51,
+            92
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "https://api.openai.com/v1",
+        "gpt-4.1-mini"
+      ],
+      "title": "LLM Config (OpenAI)"
+    },
+    {
+      "id": 6,
+      "type": "easy int",
+      "pos": [
+        -9500,
+        -2000
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        832
+      ],
+      "title": "Width"
+    },
+    {
+      "id": 7,
+      "type": "easy int",
+      "pos": [
+        -9500,
+        -1930
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480
+      ],
+      "title": "Height"
+    },
+    {
+      "id": 8,
+      "type": "easy int",
+      "pos": [
+        -9500,
+        -1860
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            76
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        81
+      ],
+      "title": "Num Frames"
+    },
+    {
+      "id": 9,
+      "type": "easy int",
+      "pos": [
+        -9500,
+        -1790
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        20
+      ],
+      "title": "Steps"
+    },
+    {
+      "id": 10,
+      "type": "easy int",
+      "pos": [
+        -9500,
+        -1720
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24
+      ],
+      "title": "FPS"
+    },
+    {
+      "id": 11,
+      "type": "Text Multiline",
+      "pos": [
+        -8500,
+        0
+      ],
+      "size": [
+        450,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tao mot video ngan 60 giay ve cuoc song hang ngay cua mot co gai tre o Sai Gon. Video gom 5 canh: sang som thuc day, di lam, an trua, lam viec, va buoi toi ve nha. Phong cach cinematographic, mau sac am ap."
+      ],
+      "title": "Concept Input"
+    },
+    {
+      "id": 12,
+      "type": "DirectLLMChat",
+      "pos": [
+        -8000,
+        0
+      ],
+      "size": [
+        450,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 1
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 2,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            3,
+            5,
+            9,
+            93
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Viet kich ban video chi tiet bang tieng Viet. Moi canh tren 1 dong, format:\nCANH [so]: [Dia diem] | [Nhan vat] | [Hanh dong chi tiet] | [Loi thoai/Voice-over] | [Cam xuc/Mood] | [Thoi luong giay]",
+        "Tao kich ban tu concept sau:",
+        "",
+        4096,
+        0.7
+      ],
+      "title": "LLM: Tao Kich Ban"
+    },
+    {
+      "id": 13,
+      "type": "easy showAnything",
+      "pos": [
+        -7500,
+        0
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 3,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "DirectLLMChat",
+      "pos": [
+        -6500,
+        -500
+      ],
+      "size": [
+        450,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 4
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 5,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            6,
+            7,
+            13,
+            24
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu kich ban, trich xuat danh sach nhan vat. Moi nhan vat tren 1 dong, format:\n[Ten] | [Tuoi] | [Gioi tinh] | [Ngoai hinh chi tiet] | [Trang phuc] | [Tinh cach]",
+        "Trich xuat nhan vat:",
+        "",
+        4096,
+        0.7
+      ],
+      "title": "LLM: Tuyen Nhan Vat"
+    },
+    {
+      "id": 15,
+      "type": "LineCountNode",
+      "pos": [
+        -6000,
+        -500
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "summary",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        true
+      ]
+    },
+    {
+      "id": 16,
+      "type": "easy showAnything",
+      "pos": [
+        -6000,
+        -400
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 7,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "DirectLLMChat",
+      "pos": [
+        -6500,
+        400
+      ],
+      "size": [
+        450,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 8
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 9,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            10,
+            11,
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu kich ban, tao storyboard chi tiet. Moi canh tren 1 dong, format:\nSCENE_[so] | [Dia diem] | [Nhan vat] | [Hanh dong] | [Goc camera] | [Mood] | [Thoi luong]",
+        "Tao storyboard:",
+        "",
+        4096,
+        0.7
+      ],
+      "title": "LLM: Boc Storyboard"
+    },
+    {
+      "id": 18,
+      "type": "LineCountNode",
+      "pos": [
+        -6000,
+        400
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "summary",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        true
+      ]
+    },
+    {
+      "id": 19,
+      "type": "easy showAnything",
+      "pos": [
+        -6000,
+        500
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 11,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "Text Concatenate",
+      "pos": [
+        -5100,
+        0
+      ],
+      "size": [
+        300,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "delimiter",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "clean_whitespace",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 12,
+          "shape": 7
+        },
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 13,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "\\n---\\n",
+        "true"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "DirectLLMChat",
+      "pos": [
+        -4750,
+        0
+      ],
+      "size": [
+        450,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 14
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 15,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            16,
+            17,
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu storyboard va nhan vat, tao MO TA ANH cho moi canh (2 anh/canh: START va END).\nFormat:\nSCENE_[so]_START | [Nhan vat, tu the, bieu cam, trang phuc] | [Background] | [Camera]\nSCENE_[so]_END | [Tuong tu cuoi canh] | [Background] | [Camera]",
+        "Tao mo ta anh:",
+        "",
+        4096,
+        0.7
+      ],
+      "title": "LLM: Mo Ta Anh"
+    },
+    {
+      "id": 22,
+      "type": "LineCountNode",
+      "pos": [
+        -4250,
+        0
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "summary",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        true
+      ]
+    },
+    {
+      "id": 23,
+      "type": "easy showAnything",
+      "pos": [
+        -4250,
+        100
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 17,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "DirectLLMChat",
+      "pos": [
+        -3400,
+        0
+      ],
+      "size": [
+        450,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 18
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 19,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            20,
+            21,
+            23,
+            48
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tao IMAGE INDEX. Moi dong 1 anh, format:\nIMG_[001] | [ORDER] | [START/END] | [SCENE_NUM] | [Prompt tieng Anh de render, cinematic photo, high quality]",
+        "Tao image index:",
+        "",
+        4096,
+        0.7
+      ],
+      "title": "LLM: Image Index"
+    },
+    {
+      "id": 25,
+      "type": "LineCountNode",
+      "pos": [
+        -2900,
+        0
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_count",
+          "type": "INT",
+          "links": [
+            41,
+            65
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "summary",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        true
+      ]
+    },
+    {
+      "id": 26,
+      "type": "easy showAnything",
+      "pos": [
+        -2900,
+        100
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 21,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "easy int",
+      "pos": [
+        -2000,
+        -800
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            22
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0
+      ],
+      "title": "Counter"
+    },
+    {
+      "id": 28,
+      "type": "easy whileLoopStart",
+      "pos": [
+        -1740,
+        -800
+      ],
+      "size": [
+        300,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "condition",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "initial_value0",
+          "type": "*",
+          "link": 22,
+          "shape": 7
+        },
+        {
+          "name": "initial_value1",
+          "type": "*",
+          "link": 23,
+          "shape": 7
+        },
+        {
+          "name": "initial_value2",
+          "type": "*",
+          "link": 24,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "flow",
+          "type": "FLOW_CONTROL",
+          "links": [
+            42
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "value0",
+          "type": "*",
+          "links": [
+            26,
+            39
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "value1",
+          "type": "*",
+          "links": [
+            25,
+            45
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "value2",
+          "type": "*",
+          "links": [
+            46
+          ],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        true
+      ]
+    },
+    {
+      "id": 29,
+      "type": "Text Load Line From File",
+      "pos": [
+        -1380,
+        -800
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 25
+        },
+        {
+          "name": "file_path",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "dictionary_name",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "mode",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            28
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0
+      ]
+    },
+    {
+      "id": 30,
+      "type": "DirectLLMChat",
+      "pos": [
+        -1020,
+        -800
+      ],
+      "size": [
+        450,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 27
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 28,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            30
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tao prompt tieng Anh render NHAN VAT tren nen trang: character portrait on white background, [chi tiet], [pose], [emotion], high quality, consistent style",
+        "Tao prompt render nhan vat:",
+        "",
+        2048,
+        0.7
+      ],
+      "title": "LLM: Char Prompt"
+    },
+    {
+      "id": 31,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -520,
+        -800
+      ],
+      "size": [
+        400,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 29
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            33
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        ""
+      ],
+      "title": "Positive"
+    },
+    {
+      "id": 32,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -520,
+        -650
+      ],
+      "size": [
+        400,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 31
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            34
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "blurry, low quality, distorted, deformed, ugly, text, watermark"
+      ],
+      "title": "Negative"
+    },
+    {
+      "id": 33,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -520,
+        -500
+      ],
+      "size": [
+        315,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            35
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        832,
+        480,
+        1
+      ]
+    },
+    {
+      "id": 34,
+      "type": "KSampler",
+      "pos": [
+        -70,
+        -800
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 32
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 33
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 34
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            36
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        42,
+        "randomize",
+        8,
+        7.0,
+        "euler",
+        "normal",
+        1.0
+      ]
+    },
+    {
+      "id": 35,
+      "type": "VAEDecode",
+      "pos": [
+        300,
+        -800
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 36
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            97,
+            98
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 37,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        300,
+        -650
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 39,
+          "shape": 7
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            40,
+            44
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "a + 1"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "easy compare",
+      "pos": [
+        300,
+        -540
+      ],
+      "size": [
+        250,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 40,
+          "shape": 7
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 41,
+          "shape": 7
+        },
+        {
+          "name": "comparison",
+          "type": "COMBO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "boolean",
+          "type": "BOOLEAN",
+          "links": [
+            43
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "a < b"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "easy whileLoopEnd",
+      "pos": [
+        600,
+        -650
+      ],
+      "size": [
+        300,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "flow",
+          "type": "FLOW_CONTROL",
+          "link": 42
+        },
+        {
+          "name": "condition",
+          "type": "BOOLEAN",
+          "link": 43
+        },
+        {
+          "name": "initial_value0",
+          "type": "*",
+          "link": 44,
+          "shape": 7
+        },
+        {
+          "name": "initial_value1",
+          "type": "*",
+          "link": 45,
+          "shape": 7
+        },
+        {
+          "name": "initial_value2",
+          "type": "*",
+          "link": 46,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value0",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "value1",
+          "type": "*",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "value2",
+          "type": "*",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        false
+      ]
+    },
+    {
+      "id": 40,
+      "type": "easy int",
+      "pos": [
+        -2000,
+        300
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            47
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0
+      ],
+      "title": "Counter"
+    },
+    {
+      "id": 41,
+      "type": "easy whileLoopStart",
+      "pos": [
+        -1740,
+        300
+      ],
+      "size": [
+        300,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "condition",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "initial_value0",
+          "type": "*",
+          "link": 47,
+          "shape": 7
+        },
+        {
+          "name": "initial_value1",
+          "type": "*",
+          "link": 48,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "flow",
+          "type": "FLOW_CONTROL",
+          "links": [
+            66
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "value0",
+          "type": "*",
+          "links": [
+            50,
+            63
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "value1",
+          "type": "*",
+          "links": [
+            49,
+            69
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        true
+      ]
+    },
+    {
+      "id": 42,
+      "type": "Text Load Line From File",
+      "pos": [
+        -1380,
+        300
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 49
+        },
+        {
+          "name": "file_path",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "dictionary_name",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "mode",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 50
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            52
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0
+      ]
+    },
+    {
+      "id": 43,
+      "type": "DirectLLMChat",
+      "pos": [
+        -1020,
+        300
+      ],
+      "size": [
+        450,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 51
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 52,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            54
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tao prompt tieng Anh render BACKGROUND, khong nguoi: cinematic background, [dia diem], [anh sang], no people, high quality, wide angle",
+        "Tao prompt render background:",
+        "",
+        2048,
+        0.7
+      ],
+      "title": "LLM: BG Prompt"
+    },
+    {
+      "id": 44,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -520,
+        300
+      ],
+      "size": [
+        400,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 53
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            57
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        ""
+      ],
+      "title": "Positive BG"
+    },
+    {
+      "id": 45,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -520,
+        450
+      ],
+      "size": [
+        400,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 55
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            58
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "person, human, character, face, blurry, low quality, text, watermark"
+      ],
+      "title": "Negative BG"
+    },
+    {
+      "id": 46,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -520,
+        600
+      ],
+      "size": [
+        315,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            59
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        832,
+        480,
+        1
+      ]
+    },
+    {
+      "id": 47,
+      "type": "KSampler",
+      "pos": [
+        -70,
+        300
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 56
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 57
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 58
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            60
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        42,
+        "randomize",
+        8,
+        7.0,
+        "euler",
+        "normal",
+        1.0
+      ]
+    },
+    {
+      "id": 48,
+      "type": "VAEDecode",
+      "pos": [
+        300,
+        300
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 60
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 61
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            99
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 50,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        300,
+        450
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 63,
+          "shape": 7
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            64,
+            68
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "a + 1"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "easy compare",
+      "pos": [
+        300,
+        560
+      ],
+      "size": [
+        250,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 64,
+          "shape": 7
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 65,
+          "shape": 7
+        },
+        {
+          "name": "comparison",
+          "type": "COMBO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "boolean",
+          "type": "BOOLEAN",
+          "links": [
+            67
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "a < b"
+      ]
+    },
+    {
+      "id": 52,
+      "type": "easy whileLoopEnd",
+      "pos": [
+        600,
+        450
+      ],
+      "size": [
+        300,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "flow",
+          "type": "FLOW_CONTROL",
+          "link": 66
+        },
+        {
+          "name": "condition",
+          "type": "BOOLEAN",
+          "link": 67
+        },
+        {
+          "name": "initial_value0",
+          "type": "*",
+          "link": 68,
+          "shape": 7
+        },
+        {
+          "name": "initial_value1",
+          "type": "*",
+          "link": 69,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value0",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "value1",
+          "type": "*",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        false
+      ]
+    },
+    {
+      "id": 55,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        1880,
+        50
+      ],
+      "size": [
+        315,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 99
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 98
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 100,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            73
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0,
+        0,
+        false
+      ]
+    },
+    {
+      "id": 56,
+      "type": "WanVideoImageResizeToClosest",
+      "pos": [
+        2250,
+        50
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            74,
+            75
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        832,
+        480,
+        "keep_input"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "SaveImage",
+      "pos": [
+        2620,
+        20
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 74
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "composite_start_end"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "PreviewImage",
+      "pos": [
+        2620,
+        140
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 75
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 59,
+      "type": "LoadImage",
+      "pos": [
+        3400,
+        0
+      ],
+      "size": [
+        315,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            77,
+            80,
+            83
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "composite_start_end_00001_.png",
+        "image"
+      ],
+      "title": "Start Image"
+    },
+    {
+      "id": 60,
+      "type": "LoadImage",
+      "pos": [
+        3400,
+        360
+      ],
+      "size": [
+        315,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            78,
+            84
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "composite_start_end_00002_.png",
+        "image"
+      ],
+      "title": "End Image"
+    },
+    {
+      "id": 61,
+      "type": "WanVideoVACEStartToEndFrame",
+      "pos": [
+        3780,
+        0
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "num_frames",
+          "type": "INT",
+          "link": 76
+        },
+        {
+          "name": "empty_frame_level",
+          "type": "FLOAT",
+          "link": null
+        },
+        {
+          "name": "start_image",
+          "type": "IMAGE",
+          "link": 77,
+          "shape": 7
+        },
+        {
+          "name": "end_image",
+          "type": "IMAGE",
+          "link": 78,
+          "shape": 7
+        },
+        {
+          "name": "control_images",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "inpaint_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "start_index",
+          "type": "INT",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "end_index",
+          "type": "INT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        81,
+        0.5
+      ]
+    },
+    {
+      "id": 62,
+      "type": "WanVideoClipVisionEncode",
+      "pos": [
+        3780,
+        250
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 79
+        },
+        {
+          "name": "image_1",
+          "type": "IMAGE",
+          "link": 80
+        },
+        {
+          "name": "image_2",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "negative_image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_CLIPEMBEDS",
+          "links": [
+            82
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1.0,
+        1.0,
+        "center",
+        "average",
+        true
+      ]
+    },
+    {
+      "id": 63,
+      "type": "WanVideoImageToVideoEncode",
+      "pos": [
+        4200,
+        0
+      ],
+      "size": [
+        380,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 81,
+          "shape": 7
+        },
+        {
+          "name": "clip_embeds",
+          "type": "WANVIDIMAGE_CLIPEMBEDS",
+          "link": 82,
+          "shape": 7
+        },
+        {
+          "name": "start_image",
+          "type": "IMAGE",
+          "link": 83,
+          "shape": 7
+        },
+        {
+          "name": "end_image",
+          "type": "IMAGE",
+          "link": 84,
+          "shape": 7
+        },
+        {
+          "name": "control_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "temporal_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "extra_latents",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "links": [
+            86
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        832,
+        480,
+        81,
+        0.0,
+        1.0,
+        1.0,
+        true
+      ]
+    },
+    {
+      "id": 64,
+      "type": "WanVideoTextEncodeCached",
+      "pos": [
+        4200,
+        330
+      ],
+      "size": [
+        400,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "extender_args",
+          "type": "WANVIDEOPROMPTEXTENDER_ARGS",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "links": [
+            87
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative_text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "umt5_xxl_fp16.safetensors",
+        "bf16",
+        "Smooth cinematic camera movement, natural human motion, gentle transitions between poses, consistent lighting",
+        "blurry, static, low quality, distorted, jerky motion, flickering",
+        "disabled",
+        true,
+        "gpu"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "WanVideoSampler",
+      "pos": [
+        4650,
+        0
+      ],
+      "size": [
+        380,
+        350
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "link": 85
+        },
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "link": 86
+        },
+        {
+          "name": "text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "link": 87,
+          "shape": 7
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            89
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_samples",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        20,
+        6.0,
+        8.0,
+        42,
+        "randomize",
+        true,
+        "dpm++_sde",
+        0
+      ]
+    },
+    {
+      "id": 66,
+      "type": "WanVideoDecode",
+      "pos": [
+        5100,
+        0
+      ],
+      "size": [
+        315,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 88
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 89
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            90,
+            91
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        false,
+        272,
+        272,
+        144,
+        128
+      ]
+    },
+    {
+      "id": 67,
+      "type": "PreviewImage",
+      "pos": [
+        5100,
+        250
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 90
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 68,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        5480,
+        0
+      ],
+      "size": [
+        400,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 91
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 96,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24.0,
+        0,
+        "VideoProduction_Final",
+        "video/h264-mp4",
+        false,
+        true
+      ]
+    },
+    {
+      "id": 69,
+      "type": "DirectLLMChat",
+      "pos": [
+        6000,
+        400
+      ],
+      "size": [
+        500,
+        280
+      ],
+      "flags": {},
+      "order": 99,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 92
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "system_prompt"
+          }
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 93,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "max_tokens"
+          }
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "temperature"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            94
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "LLM: Extract Voiceover",
+      "properties": {
+        "Node name for S&R": "DirectLLMChat"
+      },
+      "widgets_values": [
+        "Tu kich ban video, trich xuat voiceover cua tat ca cac canh.\n\nYeu cau:\n- Ghep thanh mot doan van LIEN MACH, doc tu nhien nhu narrator\n- Giu nguyen ngon ngu goc\n- Them ngat nghi tu nhien giua cac canh (dung dau ... hoac dau ,)\n- CHI TRA VE VAN BAN THUAN TUY, khong format, khong danh so",
+        "Trich xuat voiceover:",
+        "",
+        4096,
+        0.7
+      ]
+    },
+    {
+      "id": 70,
+      "type": "ChatterBoxVoiceTTS",
+      "pos": [
+        6560,
+        400
+      ],
+      "size": [
+        420,
+        260
+      ],
+      "flags": {},
+      "order": 100,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 94
+        },
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": 95,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            96
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "generation_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "title": "ChatterBox TTS (Voice)",
+      "properties": {
+        "Node name for S&R": "ChatterBoxVoiceTTS"
+      },
+      "widgets_values": [
+        "auto",
+        0.5,
+        0.7,
+        0.5,
+        42
+      ]
+    },
+    {
+      "id": 71,
+      "type": "LoadAudio",
+      "pos": [
+        6560,
+        700
+      ],
+      "size": [
+        315,
+        100
+      ],
+      "flags": {},
+      "order": 98,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            95
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Ref Voice (optional, for cloning)",
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "reference_voice.mp3"
+      ]
+    },
+    {
+      "id": 72,
+      "type": "APersonMaskGenerator",
+      "pos": [
+        1000,
+        -800
+      ],
+      "size": [
+        320,
+        180
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 97
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": [
+            100
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Person Mask (from character)",
+      "properties": {
+        "Node name for S&R": "APersonMaskGenerator"
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        0.4,
+        true
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      5,
+      0,
+      12,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      2,
+      11,
+      0,
+      12,
+      3,
+      "STRING"
+    ],
+    [
+      3,
+      12,
+      0,
+      13,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      5,
+      0,
+      14,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      5,
+      12,
+      0,
+      14,
+      3,
+      "STRING"
+    ],
+    [
+      6,
+      14,
+      0,
+      15,
+      0,
+      "STRING"
+    ],
+    [
+      7,
+      14,
+      0,
+      16,
+      0,
+      "STRING"
+    ],
+    [
+      8,
+      5,
+      0,
+      17,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      9,
+      12,
+      0,
+      17,
+      3,
+      "STRING"
+    ],
+    [
+      10,
+      17,
+      0,
+      18,
+      0,
+      "STRING"
+    ],
+    [
+      11,
+      17,
+      0,
+      19,
+      0,
+      "STRING"
+    ],
+    [
+      12,
+      17,
+      0,
+      20,
+      2,
+      "STRING"
+    ],
+    [
+      13,
+      14,
+      0,
+      20,
+      3,
+      "STRING"
+    ],
+    [
+      14,
+      5,
+      0,
+      21,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      15,
+      20,
+      0,
+      21,
+      3,
+      "STRING"
+    ],
+    [
+      16,
+      21,
+      0,
+      22,
+      0,
+      "STRING"
+    ],
+    [
+      17,
+      21,
+      0,
+      23,
+      0,
+      "STRING"
+    ],
+    [
+      18,
+      5,
+      0,
+      24,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      19,
+      21,
+      0,
+      24,
+      3,
+      "STRING"
+    ],
+    [
+      20,
+      24,
+      0,
+      25,
+      0,
+      "STRING"
+    ],
+    [
+      21,
+      24,
+      0,
+      26,
+      0,
+      "STRING"
+    ],
+    [
+      22,
+      27,
+      0,
+      28,
+      1,
+      "*"
+    ],
+    [
+      23,
+      24,
+      0,
+      28,
+      2,
+      "*"
+    ],
+    [
+      24,
+      14,
+      0,
+      28,
+      3,
+      "*"
+    ],
+    [
+      25,
+      28,
+      2,
+      29,
+      0,
+      "STRING"
+    ],
+    [
+      26,
+      28,
+      1,
+      29,
+      4,
+      "INT"
+    ],
+    [
+      27,
+      5,
+      0,
+      30,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      28,
+      29,
+      0,
+      30,
+      3,
+      "STRING"
+    ],
+    [
+      29,
+      1,
+      1,
+      31,
+      0,
+      "CLIP"
+    ],
+    [
+      30,
+      30,
+      0,
+      31,
+      1,
+      "STRING"
+    ],
+    [
+      31,
+      1,
+      1,
+      32,
+      0,
+      "CLIP"
+    ],
+    [
+      32,
+      1,
+      0,
+      34,
+      0,
+      "MODEL"
+    ],
+    [
+      33,
+      31,
+      0,
+      34,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      34,
+      32,
+      0,
+      34,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      35,
+      33,
+      0,
+      34,
+      3,
+      "LATENT"
+    ],
+    [
+      36,
+      34,
+      0,
+      35,
+      0,
+      "LATENT"
+    ],
+    [
+      37,
+      1,
+      2,
+      35,
+      1,
+      "VAE"
+    ],
+    [
+      39,
+      28,
+      1,
+      37,
+      0,
+      "*"
+    ],
+    [
+      40,
+      37,
+      0,
+      38,
+      0,
+      "*"
+    ],
+    [
+      41,
+      25,
+      0,
+      38,
+      1,
+      "*"
+    ],
+    [
+      42,
+      28,
+      0,
+      39,
+      0,
+      "FLOW_CONTROL"
+    ],
+    [
+      43,
+      38,
+      0,
+      39,
+      1,
+      "BOOLEAN"
+    ],
+    [
+      44,
+      37,
+      0,
+      39,
+      2,
+      "*"
+    ],
+    [
+      45,
+      28,
+      2,
+      39,
+      3,
+      "*"
+    ],
+    [
+      46,
+      28,
+      3,
+      39,
+      4,
+      "*"
+    ],
+    [
+      47,
+      40,
+      0,
+      41,
+      1,
+      "*"
+    ],
+    [
+      48,
+      24,
+      0,
+      41,
+      2,
+      "*"
+    ],
+    [
+      49,
+      41,
+      2,
+      42,
+      0,
+      "STRING"
+    ],
+    [
+      50,
+      41,
+      1,
+      42,
+      4,
+      "INT"
+    ],
+    [
+      51,
+      5,
+      0,
+      43,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      52,
+      42,
+      0,
+      43,
+      3,
+      "STRING"
+    ],
+    [
+      53,
+      1,
+      1,
+      44,
+      0,
+      "CLIP"
+    ],
+    [
+      54,
+      43,
+      0,
+      44,
+      1,
+      "STRING"
+    ],
+    [
+      55,
+      1,
+      1,
+      45,
+      0,
+      "CLIP"
+    ],
+    [
+      56,
+      1,
+      0,
+      47,
+      0,
+      "MODEL"
+    ],
+    [
+      57,
+      44,
+      0,
+      47,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      58,
+      45,
+      0,
+      47,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      59,
+      46,
+      0,
+      47,
+      3,
+      "LATENT"
+    ],
+    [
+      60,
+      47,
+      0,
+      48,
+      0,
+      "LATENT"
+    ],
+    [
+      61,
+      1,
+      2,
+      48,
+      1,
+      "VAE"
+    ],
+    [
+      63,
+      41,
+      1,
+      50,
+      0,
+      "*"
+    ],
+    [
+      64,
+      50,
+      0,
+      51,
+      0,
+      "*"
+    ],
+    [
+      65,
+      25,
+      0,
+      51,
+      1,
+      "*"
+    ],
+    [
+      66,
+      41,
+      0,
+      52,
+      0,
+      "FLOW_CONTROL"
+    ],
+    [
+      67,
+      51,
+      0,
+      52,
+      1,
+      "BOOLEAN"
+    ],
+    [
+      68,
+      50,
+      0,
+      52,
+      2,
+      "*"
+    ],
+    [
+      69,
+      41,
+      2,
+      52,
+      3,
+      "*"
+    ],
+    [
+      73,
+      55,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      74,
+      56,
+      0,
+      57,
+      0,
+      "IMAGE"
+    ],
+    [
+      75,
+      56,
+      0,
+      58,
+      0,
+      "IMAGE"
+    ],
+    [
+      76,
+      8,
+      0,
+      61,
+      0,
+      "INT"
+    ],
+    [
+      77,
+      59,
+      0,
+      61,
+      2,
+      "IMAGE"
+    ],
+    [
+      78,
+      60,
+      0,
+      61,
+      3,
+      "IMAGE"
+    ],
+    [
+      79,
+      4,
+      0,
+      62,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      80,
+      59,
+      0,
+      62,
+      1,
+      "IMAGE"
+    ],
+    [
+      81,
+      3,
+      0,
+      63,
+      0,
+      "WANVAE"
+    ],
+    [
+      82,
+      62,
+      0,
+      63,
+      1,
+      "WANVIDIMAGE_CLIPEMBEDS"
+    ],
+    [
+      83,
+      59,
+      0,
+      63,
+      2,
+      "IMAGE"
+    ],
+    [
+      84,
+      60,
+      0,
+      63,
+      3,
+      "IMAGE"
+    ],
+    [
+      85,
+      2,
+      0,
+      65,
+      0,
+      "WANVIDEOMODEL"
+    ],
+    [
+      86,
+      63,
+      0,
+      65,
+      1,
+      "WANVIDIMAGE_EMBEDS"
+    ],
+    [
+      87,
+      64,
+      0,
+      65,
+      2,
+      "WANVIDEOTEXTEMBEDS"
+    ],
+    [
+      88,
+      3,
+      0,
+      66,
+      0,
+      "WANVAE"
+    ],
+    [
+      89,
+      65,
+      0,
+      66,
+      1,
+      "LATENT"
+    ],
+    [
+      90,
+      66,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      66,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ],
+    [
+      92,
+      5,
+      0,
+      69,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      93,
+      12,
+      0,
+      69,
+      3,
+      "STRING"
+    ],
+    [
+      94,
+      69,
+      0,
+      70,
+      0,
+      "STRING"
+    ],
+    [
+      95,
+      71,
+      0,
+      70,
+      1,
+      "AUDIO"
+    ],
+    [
+      96,
+      70,
+      0,
+      68,
+      1,
+      "AUDIO"
+    ],
+    [
+      97,
+      35,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ],
+    [
+      98,
+      35,
+      0,
+      55,
+      1,
+      "IMAGE"
+    ],
+    [
+      99,
+      48,
+      0,
+      55,
+      0,
+      "IMAGE"
+    ],
+    [
+      100,
+      72,
+      0,
+      55,
+      2,
+      "MASK"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "GROUP 0: MODEL LOADING",
+      "bounding": [
+        -10050,
+        -2080,
+        800,
+        1000
+      ],
+      "color": "#A88"
+    },
+    {
+      "title": "BUOC 1: TAO KICH BAN",
+      "bounding": [
+        -8530,
+        -60,
+        1350,
+        400
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "BUOC 2A: TUYEN NHAN VAT",
+      "bounding": [
+        -6530,
+        -560,
+        850,
+        350
+      ],
+      "color": "#a1309b"
+    },
+    {
+      "title": "BUOC 2B: BOC STORYBOARD",
+      "bounding": [
+        -6530,
+        340,
+        850,
+        350
+      ],
+      "color": "#8AA"
+    },
+    {
+      "title": "BUOC 3: MO TA ANH START & END",
+      "bounding": [
+        -5130,
+        -60,
+        1200,
+        350
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "BUOC 4: DANH SO ANH",
+      "bounding": [
+        -3430,
+        -60,
+        850,
+        350
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "BUOC 5A: TAO PNG NHAN VAT (Loop)",
+      "bounding": [
+        -2030,
+        -860,
+        3000,
+        520
+      ],
+      "color": "#a1309b"
+    },
+    {
+      "title": "BUOC 5B: TAO KHUNG CANH (Loop)",
+      "bounding": [
+        -2030,
+        240,
+        3000,
+        520
+      ],
+      "color": "#b06634"
+    },
+    {
+      "title": "BUOC 6: COMPOSITE START & END",
+      "bounding": [
+        1470,
+        -60,
+        1500,
+        550
+      ],
+      "color": "#8A8"
+    },
+    {
+      "title": "BUOC 7: GHEP VIDEO - FINAL",
+      "bounding": [
+        3370,
+        -60,
+        2600,
+        750
+      ],
+      "color": "#4a4"
+    },
+    {
+      "title": "STEP 6: VOICE (ChatterBox)",
+      "bounding": [
+        5970,
+        340,
+        1050,
+        420
+      ],
+      "color": "#b06634",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.25,
+      "offset": [
+        -3000,
+        200
+      ]
+    }
+  },
+  "version": 0.4
+}

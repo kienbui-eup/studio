@@ -1,0 +1,11 @@
+# Audio processing libraries for AudioDurationNode
+# Install at least one of these for audio duration analysis:
+
+# Option 1: librosa (recommended for audio analysis, more accurate)
+librosa>=0.10.0
+
+# Option 2: pydub (alternative, supports more audio formats)
+pydub>=0.25.0
+
+# Note: You only need one of the above libraries, but having both provides
+# better compatibility and fallback options.

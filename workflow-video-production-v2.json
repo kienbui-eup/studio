@@ -1,0 +1,8078 @@
+{
+  "id": "5e625c2a-55fa-4533-b2cf-30f14bb18cbd",
+  "revision": 0,
+  "last_node_id": 148,
+  "last_link_id": 172,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            6
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "realvisxlV50_v50LightningBakedvae.safetensors"
+      ],
+      "title": "SDXL Checkpoint"
+    },
+    {
+      "id": 2,
+      "type": "LoraLoader",
+      "pos": [
+        0,
+        130
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            5
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "cinematic_v1.safetensors",
+        0.0,
+        0.0
+      ],
+      "title": "Style LoRA (Cinematic) - OFF (strength=0)"
+    },
+    {
+      "id": 3,
+      "type": "IPAdapterModelLoader",
+      "pos": [
+        0,
+        300
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IPADAPTER",
+          "type": "IPADAPTER",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ip-adapter-plus_sdxl_vit-h.safetensors"
+      ],
+      "title": "IPAdapter Model"
+    },
+    {
+      "id": 4,
+      "type": "WanVideoModelLoader",
+      "pos": [
+        400,
+        0
+      ],
+      "size": [
+        400,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "compile_args",
+          "type": "WANCOMPILEARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "block_swap_args",
+          "type": "BLOCKSWAPARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "lora",
+          "type": "WANVIDLORA",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "vram_management_args",
+          "type": "VRAM_MANAGEMENTARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "extra_model",
+          "type": "VACEPATH",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "fantasytalking_model",
+          "type": "FANTASYTALKINGMODEL",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "multitalk_model",
+          "type": "MULTITALKMODEL",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "fantasyportrait_model",
+          "type": "FANTASYPORTRAITMODEL",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "rms_norm_function",
+          "type": "COMBO",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors",
+        "bf16",
+        "fp8_e4m3fn",
+        "offload_device",
+        "sdpa"
+      ],
+      "title": "WanVideo Model"
+    },
+    {
+      "id": 5,
+      "type": "WanVideoVAELoader",
+      "pos": [
+        400,
+        180
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "vae",
+          "type": "WANVAE",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "wan_2.1_vae.safetensors"
+      ],
+      "title": "WanVideo VAE"
+    },
+    {
+      "id": 6,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        400,
+        270
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "clip_vision_h.safetensors"
+      ],
+      "title": "CLIP Vision"
+    },
+    {
+      "id": 7,
+      "type": "DirectLLMConfig",
+      "pos": [
+        400,
+        370
+      ],
+      "size": [
+        400,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "https://api.openai.com/v1",
+        "gpt-5-mini"
+      ],
+      "title": "LLM Config (OpenAI)"
+    },
+    {
+      "id": 8,
+      "type": "easy int",
+      "pos": [
+        850,
+        0
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480
+      ],
+      "title": "Width"
+    },
+    {
+      "id": 9,
+      "type": "easy int",
+      "pos": [
+        850,
+        70
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        832
+      ],
+      "title": "Height"
+    },
+    {
+      "id": 10,
+      "type": "easy int",
+      "pos": [
+        850,
+        140
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            101
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        49
+      ],
+      "title": "Num Frames (WanVideo ~2s before RIFE)"
+    },
+    {
+      "id": 11,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        370
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Set:LLM_CONFIG"
+    },
+    {
+      "id": 12,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        0
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "MODEL"
+      ],
+      "title": "Set:MODEL"
+    },
+    {
+      "id": 13,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        60
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "CLIP"
+      ],
+      "title": "Set:CLIP"
+    },
+    {
+      "id": 14,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        120
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "VAE"
+      ],
+      "title": "Set:VAE"
+    },
+    {
+      "id": 15,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        180
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "IPADAPTER"
+      ],
+      "title": "Set:IPADAPTER"
+    },
+    {
+      "id": 16,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        240
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "CLIP_VISION"
+      ],
+      "title": "Set:CLIP_VISION"
+    },
+    {
+      "id": 17,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        300
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "WANMODEL"
+      ],
+      "title": "Set:WANMODEL"
+    },
+    {
+      "id": 18,
+      "type": "SetNode",
+      "pos": [
+        1200,
+        430
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "WANVAE"
+      ],
+      "title": "Set:WANVAE"
+    },
+    {
+      "id": 19,
+      "type": "Text Multiline",
+      "pos": [
+        1800,
+        -200
+      ],
+      "size": [
+        500,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            11
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Video ngan day tieng Nhat duong pho voi linh vat HeyJ (cho Shiba vang, 2D flat cartoon).\nChu de: Japanese slang to sound like a local\nSo canh: 11 (Hook + Setup + 7 tu vung + Ending + CTA)\n\nKich ban chi tiet:\n1. HOOK: Shibi cool ngau deo kinh | Voice: Japanese slang to sound like a local\n2. SETUP: Shibi chi vao camera | Voice: Stop sounding like a textbook... say this instead\n3. Shibi lo tay lam roi do, cuoi | Tu: てへぺろ (tehepero) = oops | Voice\n4. Shibi buc | Tu: キレる (kireru) = lose it / snap | Voice\n5. Shibi nhay nhot | Tu: パリピ (paripi) = party people | Voice\n6. Shibi confused | Tu: わかんない (wakannai) = I dont get it | Voice\n7. Shibi cuoi lon | Tu: ウケる (ukeru) = thats funny | Voice\n8. Shibi che | Tu: ダサい (dasai) = lame / cringe | Voice\n9. Shibi bat ngo | Tu: マジ (maji) = for real? | Voice\n10. ENDING: Shibi cool | Voice: Now you sound less like a textbook\n11. CTA: Shibi chi xuong | Text: Follow Shibi for real Japanese | Voice off"
+      ],
+      "title": "CONCEPT INPUT"
+    },
+    {
+      "id": 20,
+      "type": "Text Multiline",
+      "pos": [
+        1800,
+        50
+      ],
+      "size": [
+        500,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Doi tuong: Gen Z, nguoi hoc tieng Nhat, fan anime\nNen tang: TikTok / YouTube Shorts / Instagram Reels (9:16 doc)\nTone: vui nhon, nhanh, hoc ma vui, meme-friendly\nPhong cach: 2D flat cartoon mascot + text overlay lon ro rang\nMuc tieu: nguoi xem nho duoc 2-3 tu tieng Nhat, follow de hoc tiep"
+      ],
+      "title": "TARGET AUDIENCE & TONE"
+    },
+    {
+      "id": 21,
+      "type": "Text Multiline",
+      "pos": [
+        1800,
+        230
+      ],
+      "size": [
+        500,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Thoi luong: 45-60 giay | So canh: 11 | FPS: 24 | Aspect: 9:16 (1080x1920)\nMoi canh noi dung: 2-4 giay | Hook: 2 giay | CTA: 3 giay"
+      ],
+      "title": "VIDEO SPECS"
+    },
+    {
+      "id": 22,
+      "type": "Text Concatenate",
+      "pos": [
+        2350,
+        -50
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "delimiter",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "clean_whitespace",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 11,
+          "shape": 7
+        },
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 12,
+          "shape": 7
+        },
+        {
+          "name": "text_c",
+          "type": "STRING",
+          "link": 13,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            15,
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "\\n---\\n",
+        "true"
+      ],
+      "title": "Merge Inputs"
+    },
+    {
+      "id": 23,
+      "type": "GetNode",
+      "pos": [
+        2700,
+        -250
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 24,
+      "type": "DirectLLMChat",
+      "pos": [
+        2700,
+        -200
+      ],
+      "size": [
+        550,
+        350
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 14
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 15,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            16,
+            18
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Ban la chuyen gia lam video ngan viral tren TikTok/Shorts. Phan tich concept va xay dung CAU TRUC VIDEO.\n\nVideo giao duc ngan theo pattern: HOOK -> SETUP -> NOI DUNG (loop) -> ENDING -> CTA\n\nTra ve CHINH XAC:\n\n[HOOK] (1-2 giay)\nHinh anh: nhan vat lam gi, bieu cam nao\nText tren man hinh: dong chu gay chu y\nMuc tieu: dung scroll, tao to mo\n\n[SETUP] (2-3 giay)\nHinh anh: nhan vat hanh dong gi\nVoice/Text: cau dan dat vao noi dung chinh\n\n[NOI DUNG] (loop moi item 2-4 giay)\nMoi item: nhan vat pose/bieu cam + tu vung/kien thuc + text overlay\nNhip do: nhanh, cat canh gon, khong keo dai\n\n[ENDING] (2-3 giay)\nHinh anh: nhan vat ket\nVoice/Text: cau ket dong lai noi dung\n\n[CTA] (2-3 giay)\nHinh anh: nhan vat chi xuong/vay tay\nText: Follow + ten kenh\nVoice: tat hoac nhe\n\n[NHIP DO TONG]\nToc do cat: nhanh (2-4 giay/canh)\nNhac nen: vui, upbeat, co beat ro\nChuyen canh: cut nhanh, bounce, zoom",
+        "Phan tich cau truc video ngan:",
+        "",
+        4096,
+        0.8
+      ],
+      "title": "LLM: Story Structure"
+    },
+    {
+      "id": 25,
+      "type": "easy showAnything",
+      "pos": [
+        3300,
+        -200
+      ],
+      "size": [
+        280,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 16,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Structure"
+    },
+    {
+      "id": 26,
+      "type": "Text Concatenate",
+      "pos": [
+        2700,
+        200
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "delimiter",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "clean_whitespace",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 17,
+          "shape": 7
+        },
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 18,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "\\n===\\n",
+        "true"
+      ],
+      "title": "Merge for Script"
+    },
+    {
+      "id": 27,
+      "type": "GetNode",
+      "pos": [
+        3050,
+        150
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 28,
+      "type": "DirectLLMChat",
+      "pos": [
+        3050,
+        200
+      ],
+      "size": [
+        550,
+        380
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 19
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 20,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            21,
+            23,
+            25,
+            133
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Ban la dao dien video ngan chuyen nghiep. Viet KICH BAN HOAN CHINH dang bang.\n\nFormat CHINH XAC cho MOI CANH (1 dong/canh, cac cot ngan cach bang | ):\nscene_num | role | visual | noi_dung | voice | text_on_screen | duration\n\nGiai thich cot:\n- scene_num: so thu tu (1,2,3...)\n- role: hook / setup / content / ending / cta\n- visual: mo ta CHINH XAC nhan vat dang lam gi, bieu cam, tu the, phu kien (VD: Shibi cool deo kinh, Shibi buc tuc do mat, Shibi nhay nhot vui ve)\n- noi_dung: noi dung hoc/thong tin trong canh (VD: tu vung, y nghia, vi du)\n- voice: loi doc/narration cua canh (hoac \"voice off\" neu khong co)\n- text_on_screen: CHU hien tren man hinh (tu vung lon + nghia nho ben duoi)\n- duration: thoi luong giay (2-4s cho content, 1-2s cho hook)\n\nQuy tac:\n- Hook: 1-2 canh dau, bat mat ngay\n- Setup: 1 canh gioi thieu chu de\n- Content: cac canh noi dung chinh (moi canh = 1 don vi kien thuc)\n- Ending: 1 canh ket\n- CTA: 1 canh cuoi keu goi follow\n- Tong thoi luong 45-60 giay\n- Chi viet bang, KHONG giai thich gi them",
+        "Viet kich ban dang bang:",
+        "",
+        6144,
+        0.7
+      ],
+      "title": "LLM: Full Script"
+    },
+    {
+      "id": 29,
+      "type": "easy showAnything",
+      "pos": [
+        3650,
+        200
+      ],
+      "size": [
+        280,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 21,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Full Script"
+    },
+    {
+      "id": 30,
+      "type": "GetNode",
+      "pos": [
+        4000,
+        -250
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            22
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 31,
+      "type": "DirectLLMChat",
+      "pos": [
+        4200,
+        -250
+      ],
+      "size": [
+        550,
+        380
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 22
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 23,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            24,
+            26,
+            42
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu kich ban video, tao BANG POSE NHAN VAT (character pose sheet).\n\nVoi MOI CANH trong kich ban, xac dinh:\n- Nhan vat dang lam gi (tu the cu the)\n- Bieu cam mat (vui/buon/gian/ngac nhien/cool...)\n- Phu kien dac biet neu co (kinh, mu, khan...)\n- Huong nhin (nhin camera, nhin sang, nhin xuong...)\n\nFormat MOI DONG (1 canh = 1 dong):\nscene_num | pose: [tu the chi tiet] | expression: [bieu cam] | props: [phu kien] | facing: [huong nhin]\n\nVi du:\n1 | pose: standing confidently with arms crossed | expression: cool smirk with sunglasses | props: round sunglasses | facing: looking at camera\n2 | pose: pointing index finger at camera | expression: excited open mouth smile | props: none | facing: directly at camera\n3 | pose: both hands up oops gesture, dropped item on floor | expression: embarrassed tongue out smile | props: none | facing: looking at camera sheepishly\n\nSO DONG = SO CANH. Chi bang, khong giai thich.",
+        "Tao bang pose nhan vat:",
+        "",
+        4096,
+        0.6
+      ],
+      "title": "LLM: Character Poses"
+    },
+    {
+      "id": 32,
+      "type": "easy showAnything",
+      "pos": [
+        4800,
+        -250
+      ],
+      "size": [
+        280,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 24,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Storyboard"
+    },
+    {
+      "id": 33,
+      "type": "Text Concatenate",
+      "pos": [
+        4800,
+        -140
+      ],
+      "size": [
+        300,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "delimiter",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "clean_whitespace",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 25,
+          "shape": 7
+        },
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 26,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            28,
+            30,
+            32,
+            55
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "\\n===STORYBOARD===\\n",
+        "true"
+      ],
+      "title": "Script + Storyboard"
+    },
+    {
+      "id": 34,
+      "type": "GetNode",
+      "pos": [
+        4000,
+        200
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            27
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 35,
+      "type": "DirectLLMChat",
+      "pos": [
+        4200,
+        200
+      ],
+      "size": [
+        550,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 27
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 28,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            33,
+            58
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu kich ban + bang pose nhan vat, tao prompt TIENG ANH de tao ANH cho MOI CANH.\n\nRANG BUOC BAT BUOC:\n- Nhan vat LUON la cung mot mascot Shiba vang 2D flat cartoon, ti le dang tron gon, cream muzzle + cream belly, orange cheeks, black oval eyes, pink tongue, outline day sach.\n- Khong duoc bien thanh nguoi that, ban than nguoi, realistic skin, realistic hair, 3D render, anime human, doll, UI, app screen, poster, typography, watermark.\n- Moi canh phai la full body mascot, nam gon trong frame, khong crop dau, tai, tay, chan.\n- Nen don gian, sach, it chi tiet, de trong vung negative space cho subtitle.\n- Bo cuc portrait 9:16, mascot o giua khung hinh, doc ro ngay tren mobile.\n- Moi canh chi thay doi pose, expression, props, va mau background theo kich ban.\n\nFormat moi dong (1 canh = 1 dong, KHONG xuong dong):\nA clean 2D flat vector cartoon illustration of the same cute yellow Shiba mascot with cream muzzle and belly, orange cheeks, black oval eyes, pink tongue, thick clean outline, full body fully visible, centered in frame, [POSE from pose sheet], [EXPRESSION], [PROPS if any], simple pastel background with clear negative space for subtitles, portrait 9:16 composition, mobile-first framing, crisp edges, mascot-brand consistency, no text\n\nSO DONG = SO CANH. Chi prompt, khong giai thich.",
+        "Tao image prompt cho moi canh:",
+        "",
+        6144,
+        0.5
+      ],
+      "title": "LLM: Scene Image Prompts"
+    },
+    {
+      "id": 36,
+      "type": "GetNode",
+      "pos": [
+        4000,
+        570
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            29
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 37,
+      "type": "DirectLLMChat",
+      "pos": [
+        4200,
+        570
+      ],
+      "size": [
+        550,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 29
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 30,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            34,
+            59
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu kich ban + bang pose, tao prompt anh CUOI CANH (END frame) cho moi canh.\n\nRANG BUOC BAT BUOC:\n- Giu NGUYEN mascot Shiba vang 2D flat cartoon nhu start frame: cream muzzle + cream belly, orange cheeks, black oval eyes, pink tongue, outline day sach.\n- Full body mascot phai nam gon trong frame, centered, portrait 9:16, khong crop bat ky bo phan nao.\n- Khong tao nguoi that, realistic anatomy, UI, text, poster, watermark, speech bubble.\n- END frame chi duoc thay doi NHE so voi START frame: nhich pose, doi expression, them mot it secondary action, giu cung background family.\n- Muc tieu la tao cap keyframe de WanVideo noi chuyen dong mem, de doc, on dinh.\n\nFormat moi dong (1 canh = 1 dong, KHONG xuong dong):\nA clean 2D flat vector cartoon illustration of the same cute yellow Shiba mascot with cream muzzle and belly, orange cheeks, black oval eyes, pink tongue, thick clean outline, full body fully visible, centered in frame, slight progression from the start pose, [EXPRESSION], [PROPS if any], simple pastel background matching the scene with subtle variation, portrait 9:16 composition, crisp edges, no text\n\nSO DONG = SO CANH. Chi prompt, khong giai thich.",
+        "Tao END frame prompts:",
+        "",
+        4096,
+        0.5
+      ],
+      "title": "LLM: End Frame Prompts"
+    },
+    {
+      "id": 38,
+      "type": "GetNode",
+      "pos": [
+        4000,
+        940
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            31
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 39,
+      "type": "DirectLLMChat",
+      "pos": [
+        4200,
+        940
+      ],
+      "size": [
+        550,
+        380
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 31
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 32,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            35,
+            60
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tao MOTION PROMPT tieng Anh cho tung canh video ngan.\nDay la video fast-cut TikTok style, moi canh 2-4 giay, nhung uu tien chat luong mascot 2D on dinh.\n\nRANG BUOC:\n- Chuyen dong ngan, de doc, khong qua phuc tap.\n- Tranh camera move cuc manh, whip pan, xoay camera, blur manh, bien dang nhan vat.\n- Uu tien subtle body motion + nhe camera push/pull de mascot giu dung shape.\n\nMoi dong (1 canh = 1 dong):\n[character motion] | [camera] | [speed] | [effect]\n\nSO DONG = SO CANH. Chi prompt, khong giai thich.",
+        "Tao motion prompts:",
+        "",
+        4096,
+        0.5
+      ],
+      "title": "LLM: Motion Prompts"
+    },
+    {
+      "id": 40,
+      "type": "DirectorsCinemaPrompt",
+      "pos": [
+        4800,
+        1350
+      ],
+      "size": [
+        350,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "subject",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "preset",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "target_model",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "mood",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "camera_angle",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "lighting",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "None",
+        "flux_dev",
+        "dramatic",
+        "eye_level",
+        "golden_hour",
+        ""
+      ],
+      "title": "Directors Cinema Prompt (Optional)"
+    },
+    {
+      "id": 41,
+      "type": "easy int",
+      "pos": [
+        4800,
+        200
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            125
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        11
+      ],
+      "title": "Scene Count (NUM_SCENES)"
+    },
+    {
+      "id": 42,
+      "type": "easy showAnything",
+      "pos": [
+        4800,
+        300
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 33,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Start Prompts"
+    },
+    {
+      "id": 43,
+      "type": "easy showAnything",
+      "pos": [
+        4800,
+        570
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 34,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview End Prompts"
+    },
+    {
+      "id": 44,
+      "type": "easy showAnything",
+      "pos": [
+        4800,
+        940
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 35,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Motion Prompts"
+    },
+    {
+      "id": 45,
+      "type": "LoadImage",
+      "pos": [
+        5600,
+        -1200
+      ],
+      "size": [
+        315,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            36,
+            69
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "heyj_linh_vat/1-2.png",
+        "image"
+      ],
+      "title": "HeyJ Mascot (Ref 1 - Wave)"
+    },
+    {
+      "id": 46,
+      "type": "LoadImage",
+      "pos": [
+        5950,
+        -1200
+      ],
+      "size": [
+        315,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            37
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "heyj_linh_vat/1-3.png",
+        "image"
+      ],
+      "title": "HeyJ Mascot (Ref 2 - Jump)"
+    },
+    {
+      "id": 47,
+      "type": "LoadImage",
+      "pos": [
+        6300,
+        -1200
+      ],
+      "size": [
+        315,
+        320
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            39
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "heyj_linh_vat/1-4.png",
+        "image"
+      ],
+      "title": "HeyJ Mascot (Ref 3 - Hat)"
+    },
+    {
+      "id": 48,
+      "type": "ImageBatch",
+      "pos": [
+        6650,
+        -1200
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 36
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            38
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Batch Refs 1+2"
+    },
+    {
+      "id": 49,
+      "type": "ImageBatch",
+      "pos": [
+        6650,
+        -1130
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 38
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 39
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            40
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Batch Refs +3"
+    },
+    {
+      "id": 50,
+      "type": "PreviewImage",
+      "pos": [
+        6650,
+        -1050
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 40
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Preview Char Refs"
+    },
+    {
+      "id": 51,
+      "type": "GetNode",
+      "pos": [
+        5400,
+        -820
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            41
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 52,
+      "type": "GetNode",
+      "pos": [
+        6150,
+        -740
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            43,
+            45
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "CLIP"
+      ],
+      "title": "Get:CLIP"
+    },
+    {
+      "id": 53,
+      "type": "GetNode",
+      "pos": [
+        6600,
+        -870
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            46
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "MODEL"
+      ],
+      "title": "Get:MODEL"
+    },
+    {
+      "id": 54,
+      "type": "GetNode",
+      "pos": [
+        6950,
+        -870
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            51
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "VAE"
+      ],
+      "title": "Get:VAE"
+    },
+    {
+      "id": 55,
+      "type": "DirectLLMChat",
+      "pos": [
+        5600,
+        -820
+      ],
+      "size": [
+        500,
+        230
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 41
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 42,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            44
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu storyboard, tao prompt TIENG ANH cho anh tham chieu PHONG CACH (style board).\nAnh nay CHI duoc the hien bang bang mau + hinh abstract, de mo ta palette va mood tong the.\n\nRANG BUOC:\n- no people, no character, no face, no text, no letters, no typography, no interface, no app screen, no dashboard, no poster.\n- abstract color script, palette swatches, simple lighting mood shapes.\n\nFormat (1 dong):\nabstract style board, color palette swatches, soft cinematic gradients, mascot-friendly pastel tones, clean lighting mood study, simple abstract composition, no text, no UI, no people, high quality",
+        "Tao style reference prompt:",
+        "",
+        4096,
+        0.5
+      ],
+      "title": "LLM: Style Prompt"
+    },
+    {
+      "id": 56,
+      "type": "CLIPTextEncode",
+      "pos": [
+        6150,
+        -820
+      ],
+      "size": [
+        400,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 43
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            47
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        ""
+      ],
+      "title": "Style Positive"
+    },
+    {
+      "id": 57,
+      "type": "CLIPTextEncode",
+      "pos": [
+        6150,
+        -720
+      ],
+      "size": [
+        400,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 45
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            48
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "text, letters, typography, interface, dashboard, app screen, poster, people, person, face, blurry, low quality"
+      ],
+      "title": "Style Negative"
+    },
+    {
+      "id": 58,
+      "type": "EmptyLatentImage",
+      "pos": [
+        6150,
+        -620
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            49
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480,
+        832,
+        1
+      ],
+      "title": "Style Latent 16:9"
+    },
+    {
+      "id": 59,
+      "type": "KSampler",
+      "pos": [
+        6600,
+        -820
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 46
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 47
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 48
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 49
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            50
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        123,
+        "fixed",
+        8,
+        2.0,
+        "dpmpp_sde",
+        "karras",
+        1.0
+      ],
+      "title": "KSampler Style (Lightning 8 steps)"
+    },
+    {
+      "id": 60,
+      "type": "VAEDecode",
+      "pos": [
+        6950,
+        -820
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 50
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 51
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            52,
+            53,
+            73
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 61,
+      "type": "SaveImage",
+      "pos": [
+        7200,
+        -820
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 52
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "style_ref"
+      ],
+      "title": "Save Style Ref"
+    },
+    {
+      "id": 62,
+      "type": "PreviewImage",
+      "pos": [
+        7200,
+        -720
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 53
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Preview Style"
+    },
+    {
+      "id": 63,
+      "type": "GetNode",
+      "pos": [
+        5400,
+        -520
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            54
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 64,
+      "type": "DirectLLMChat",
+      "pos": [
+        5600,
+        -520
+      ],
+      "size": [
+        500,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 54
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 55,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            56,
+            78
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tao 1 dong negative prompt tieng Anh cho toan bo video.\nBat buoc phai bao gom cac nhom loi sau de giu mascot on dinh:\n- photorealistic human, realistic woman, realistic skin, realistic hair, human body\n- cropped head, cut off ears, cut off hands, cut off feet, off-center subject\n- extra limbs, bad anatomy, deformed face, melted outline, inconsistent mascot proportions\n- text, letters, typography, logo, watermark, UI, app screen, dashboard\n- cluttered background, noisy background, low contrast subject\nFormat: 1 dong, cac tu cach nhau boi dau phay.",
+        "Tao negative prompt:",
+        "",
+        4096,
+        0.5
+      ],
+      "title": "LLM: Negative Prompt"
+    },
+    {
+      "id": 65,
+      "type": "easy showAnything",
+      "pos": [
+        6150,
+        -520
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 56,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Negative"
+    },
+    {
+      "id": 66,
+      "type": "GetNode",
+      "pos": [
+        0,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            67
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "MODEL"
+      ],
+      "title": "Get:MODEL"
+    },
+    {
+      "id": 67,
+      "type": "GetNode",
+      "pos": [
+        220,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            75,
+            77,
+            79
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "CLIP"
+      ],
+      "title": "Get:CLIP"
+    },
+    {
+      "id": 68,
+      "type": "GetNode",
+      "pos": [
+        440,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            86,
+            91,
+            97
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "VAE"
+      ],
+      "title": "Get:VAE"
+    },
+    {
+      "id": 69,
+      "type": "GetNode",
+      "pos": [
+        660,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            68,
+            72
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "IPADAPTER"
+      ],
+      "title": "Get:IPADAPTER"
+    },
+    {
+      "id": 70,
+      "type": "GetNode",
+      "pos": [
+        880,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            70,
+            74,
+            106
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "CLIP_VISION"
+      ],
+      "title": "Get:CLIP_VISION"
+    },
+    {
+      "id": 71,
+      "type": "GetNode",
+      "pos": [
+        1100,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            115
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "WANMODEL"
+      ],
+      "title": "Get:WANMODEL"
+    },
+    {
+      "id": 72,
+      "type": "GetNode",
+      "pos": [
+        1320,
+        1500
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            109,
+            118
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "WANVAE"
+      ],
+      "title": "Get:WANVAE"
+    },
+    {
+      "id": 73,
+      "type": "easy int",
+      "pos": [
+        0,
+        1800
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            57
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0
+      ],
+      "title": "Counter"
+    },
+    {
+      "id": 74,
+      "type": "easy whileLoopStart",
+      "pos": [
+        260,
+        1800
+      ],
+      "size": [
+        300,
+        350
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "condition",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "initial_value0",
+          "type": "*",
+          "link": 57,
+          "shape": 7
+        },
+        {
+          "name": "initial_value1",
+          "type": "*",
+          "link": 58,
+          "shape": 7
+        },
+        {
+          "name": "initial_value2",
+          "type": "*",
+          "link": 59,
+          "shape": 7
+        },
+        {
+          "name": "initial_value3",
+          "type": "*",
+          "link": 60,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "flow",
+          "type": "FLOW_CONTROL",
+          "links": [
+            126
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "value0",
+          "type": "*",
+          "links": [
+            61,
+            63,
+            65,
+            123
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "value1",
+          "type": "*",
+          "links": [
+            62,
+            129
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "value2",
+          "type": "*",
+          "links": [
+            64,
+            130
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "value3",
+          "type": "*",
+          "links": [
+            66,
+            131
+          ],
+          "slot_index": 4
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        true
+      ],
+      "title": "Scene Production Loop"
+    },
+    {
+      "id": 75,
+      "type": "Text Load Line From File",
+      "pos": [
+        620,
+        1720
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 61
+        },
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 62,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            76,
+            104
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0
+      ],
+      "title": "Get Start Prompt"
+    },
+    {
+      "id": 76,
+      "type": "Text Load Line From File",
+      "pos": [
+        620,
+        1880
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 63
+        },
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 64,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            80
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0
+      ],
+      "title": "Get End Prompt"
+    },
+    {
+      "id": 77,
+      "type": "Text Load Line From File",
+      "pos": [
+        620,
+        2040
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "INT",
+          "link": 65
+        },
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 66,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "line_text",
+          "type": "STRING",
+          "links": [
+            105
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "dictionary",
+          "type": "DICT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        "[filename]",
+        "TextBatch",
+        "index",
+        0
+      ],
+      "title": "Get Motion Prompt"
+    },
+    {
+      "id": 78,
+      "type": "IPAdapterAdvanced",
+      "pos": [
+        980,
+        2060
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 67
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 68
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 69
+        },
+        {
+          "name": "image_negative",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 70,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            71,
+            81,
+            92
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1.3,
+        "ease in-out",
+        "concat",
+        0.0,
+        1.0,
+        "strong style transfer"
+      ],
+      "title": "IPAdapter: Character Identity (strong)"
+    },
+    {
+      "id": 79,
+      "type": "IPAdapterAdvanced",
+      "pos": [
+        980,
+        2300
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 71
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 72
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 73
+        },
+        {
+          "name": "image_negative",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 74,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0.0,
+        "linear",
+        "concat",
+        0.0,
+        1.0,
+        "V only"
+      ],
+      "title": "IPAdapter: Style/Mood (OFF weight=0)"
+    },
+    {
+      "id": 80,
+      "type": "CLIPTextEncode",
+      "pos": [
+        980,
+        1660
+      ],
+      "size": [
+        400,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 75
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            82
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        ""
+      ],
+      "title": "Start Positive"
+    },
+    {
+      "id": 81,
+      "type": "CLIPTextEncode",
+      "pos": [
+        980,
+        1750
+      ],
+      "size": [
+        400,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 77
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 78
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            83,
+            94
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "photorealistic, realistic woman, realistic skin, realistic hair, human, live action, 3d render, bad anatomy, deformed, extra limbs, cropped head, cropped ears, cropped hands, cropped feet, off center subject, text, letters, typography, logo, watermark, interface, app screen, dashboard, cluttered background, noisy background"
+      ],
+      "title": "Negative (from LLM)"
+    },
+    {
+      "id": 82,
+      "type": "CLIPTextEncode",
+      "pos": [
+        980,
+        2540
+      ],
+      "size": [
+        400,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 79
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            93
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        ""
+      ],
+      "title": "End Positive"
+    },
+    {
+      "id": 83,
+      "type": "EmptyLatentImage",
+      "pos": [
+        980,
+        1840
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            84
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480,
+        832,
+        1
+      ],
+      "title": "Latent 16:9"
+    },
+    {
+      "id": 84,
+      "type": "KSampler",
+      "pos": [
+        1430,
+        1660
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 81
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 82
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 83
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 84
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            85
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        42,
+        "fixed",
+        8,
+        2.0,
+        "dpmpp_sde",
+        "karras",
+        1.0
+      ],
+      "title": "KSampler START (Lightning 8 steps)"
+    },
+    {
+      "id": 85,
+      "type": "VAEDecode",
+      "pos": [
+        1800,
+        1660
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 85
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 86
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            87,
+            90
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 86,
+      "type": "WanVideoImageResizeToClosest",
+      "pos": [
+        2050,
+        1660
+      ],
+      "size": [
+        315,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 87
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            88,
+            89,
+            102,
+            107,
+            111
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480,
+        832,
+        "keep_input"
+      ],
+      "title": "Resize START"
+    },
+    {
+      "id": 87,
+      "type": "SaveImage",
+      "pos": [
+        2400,
+        1660
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 88
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "scene_start"
+      ],
+      "title": "Save START"
+    },
+    {
+      "id": 88,
+      "type": "PreviewImage",
+      "pos": [
+        2400,
+        1750
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 89
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Preview START"
+    },
+    {
+      "id": 89,
+      "type": "VAEEncode",
+      "pos": [
+        1800,
+        2400
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 90
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            95
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Encode START -> Latent"
+    },
+    {
+      "id": 90,
+      "type": "KSampler",
+      "pos": [
+        1430,
+        2400
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 92
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 93
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 94
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            96
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        42,
+        "fixed",
+        8,
+        2.0,
+        "dpmpp_sde",
+        "karras",
+        0.45
+      ],
+      "title": "KSampler END (Lightning img2img 0.45)"
+    },
+    {
+      "id": 91,
+      "type": "VAEDecode",
+      "pos": [
+        2050,
+        2400
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 96
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 97
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            98
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": []
+    },
+    {
+      "id": 92,
+      "type": "WanVideoImageResizeToClosest",
+      "pos": [
+        2050,
+        2480
+      ],
+      "size": [
+        315,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            99,
+            100,
+            103,
+            108,
+            112
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480,
+        832,
+        "keep_input"
+      ],
+      "title": "Resize END"
+    },
+    {
+      "id": 93,
+      "type": "SaveImage",
+      "pos": [
+        2400,
+        2400
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 99
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "scene_end"
+      ],
+      "title": "Save END"
+    },
+    {
+      "id": 94,
+      "type": "PreviewImage",
+      "pos": [
+        2400,
+        2500
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 100
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Preview END"
+    },
+    {
+      "id": 95,
+      "type": "WanVideoVACEStartToEndFrame",
+      "pos": [
+        2750,
+        1660
+      ],
+      "size": [
+        380,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "num_frames",
+          "type": "INT",
+          "link": 101
+        },
+        {
+          "name": "empty_frame_level",
+          "type": "FLOAT",
+          "link": null
+        },
+        {
+          "name": "start_image",
+          "type": "IMAGE",
+          "link": 102,
+          "shape": 7
+        },
+        {
+          "name": "end_image",
+          "type": "IMAGE",
+          "link": 103,
+          "shape": 7
+        },
+        {
+          "name": "control_images",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "inpaint_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "start_index",
+          "type": "INT",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "end_index",
+          "type": "INT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": [
+            113
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        49,
+        0.5
+      ],
+      "title": "VACE Start->End Control"
+    },
+    {
+      "id": 96,
+      "type": "Text Concatenate",
+      "pos": [
+        2750,
+        1900
+      ],
+      "size": [
+        300,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "delimiter",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "clean_whitespace",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 104,
+          "shape": 7
+        },
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 105,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            114
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        ". ",
+        "true"
+      ],
+      "title": "Scene + Motion Prompt"
+    },
+    {
+      "id": 97,
+      "type": "WanVideoClipVisionEncode",
+      "pos": [
+        2750,
+        2040
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 106
+        },
+        {
+          "name": "image_1",
+          "type": "IMAGE",
+          "link": 107
+        },
+        {
+          "name": "image_2",
+          "type": "IMAGE",
+          "link": 108,
+          "shape": 7
+        },
+        {
+          "name": "negative_image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_CLIPEMBEDS",
+          "links": [
+            110
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        1.0,
+        1.0,
+        "center",
+        "average",
+        true
+      ],
+      "title": "CLIP Vision Encode"
+    },
+    {
+      "id": 98,
+      "type": "WanVideoImageToVideoEncode",
+      "pos": [
+        3150,
+        2040
+      ],
+      "size": [
+        380,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 109,
+          "shape": 7
+        },
+        {
+          "name": "clip_embeds",
+          "type": "WANVIDIMAGE_CLIPEMBEDS",
+          "link": 110,
+          "shape": 7
+        },
+        {
+          "name": "start_image",
+          "type": "IMAGE",
+          "link": 111,
+          "shape": 7
+        },
+        {
+          "name": "end_image",
+          "type": "IMAGE",
+          "link": 112,
+          "shape": 7
+        },
+        {
+          "name": "control_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "temporal_mask",
+          "type": "MASK",
+          "link": 113,
+          "shape": 7
+        },
+        {
+          "name": "extra_latents",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "links": [
+            116
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        480,
+        832,
+        49,
+        0.0,
+        1.0,
+        1.0,
+        true
+      ],
+      "title": "I2V Encode + VACE"
+    },
+    {
+      "id": 99,
+      "type": "WanVideoTextEncodeCached",
+      "pos": [
+        3150,
+        1660
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "link": 114
+        },
+        {
+          "name": "extender_args",
+          "type": "WANVIDEOPROMPTEXTENDER_ARGS",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "links": [
+            117
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative_text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "umt5_xxl_fp16.safetensors",
+        "bf16",
+        "",
+        "blurry, static, low quality, distorted, jerky motion, flickering, frozen, duplicate frames, morphing, face distortion, unnatural movement, abrupt cuts, inconsistent lighting, floating objects",
+        "disabled",
+        true,
+        "gpu"
+      ],
+      "title": "WanVideo Text Encode"
+    },
+    {
+      "id": 100,
+      "type": "WanVideoSampler",
+      "pos": [
+        3600,
+        1660
+      ],
+      "size": [
+        380,
+        350
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "link": 115
+        },
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "link": 116
+        },
+        {
+          "name": "text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "link": 117,
+          "shape": 7
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            119
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_samples",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        25,
+        6.0,
+        8.0,
+        42,
+        "randomize",
+        true,
+        "dpm++_sde",
+        0
+      ],
+      "title": "WanVideo Sampler"
+    },
+    {
+      "id": 101,
+      "type": "WanVideoDecode",
+      "pos": [
+        4030,
+        1660
+      ],
+      "size": [
+        315,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 118
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            120
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        false,
+        272,
+        272,
+        144,
+        128
+      ],
+      "title": "WanVideo Decode"
+    },
+    {
+      "id": 102,
+      "type": "RIFE VFI",
+      "pos": [
+        4030,
+        1920
+      ],
+      "size": [
+        315,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frames",
+          "type": "IMAGE",
+          "link": 120
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            121,
+            122
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "rife49.pth",
+        10,
+        2,
+        true,
+        true,
+        1.0,
+        "float16",
+        false,
+        1
+      ],
+      "title": "RIFE x2 Interpolation"
+    },
+    {
+      "id": 103,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        4400,
+        1660
+      ],
+      "size": [
+        400,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 121
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24.0,
+        0,
+        "scene_video",
+        "video/h264-mp4",
+        false,
+        true
+      ],
+      "title": "Save Scene Video"
+    },
+    {
+      "id": 104,
+      "type": "PreviewImage",
+      "pos": [
+        4400,
+        1960
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 122
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Preview Video Frame"
+    },
+    {
+      "id": 105,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        4400,
+        2100
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 123,
+          "shape": 7
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            124,
+            128
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "a + 1"
+      ],
+      "title": "Counter + 1"
+    },
+    {
+      "id": 106,
+      "type": "easy compare",
+      "pos": [
+        4400,
+        2210
+      ],
+      "size": [
+        250,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 124,
+          "shape": 7
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 125,
+          "shape": 7
+        },
+        {
+          "name": "comparison",
+          "type": "COMBO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "boolean",
+          "type": "BOOLEAN",
+          "links": [
+            127
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "a < b"
+      ]
+    },
+    {
+      "id": 107,
+      "type": "easy whileLoopEnd",
+      "pos": [
+        4700,
+        2050
+      ],
+      "size": [
+        300,
+        350
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "flow",
+          "type": "FLOW_CONTROL",
+          "link": 126
+        },
+        {
+          "name": "condition",
+          "type": "BOOLEAN",
+          "link": 127
+        },
+        {
+          "name": "initial_value0",
+          "type": "*",
+          "link": 128,
+          "shape": 7
+        },
+        {
+          "name": "initial_value1",
+          "type": "*",
+          "link": 129,
+          "shape": 7
+        },
+        {
+          "name": "initial_value2",
+          "type": "*",
+          "link": 130,
+          "shape": 7
+        },
+        {
+          "name": "initial_value3",
+          "type": "*",
+          "link": 131,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value0",
+          "type": "*",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "value1",
+          "type": "*",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "value2",
+          "type": "*",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "value3",
+          "type": "*",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        false
+      ],
+      "title": "Scene Production Loop End"
+    },
+    {
+      "id": 108,
+      "type": "GetNode",
+      "pos": [
+        -50,
+        3200
+      ],
+      "size": [
+        200,
+        60
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            132
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG"
+    },
+    {
+      "id": 109,
+      "type": "DirectLLMChat",
+      "pos": [
+        200,
+        3200
+      ],
+      "size": [
+        550,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 132
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 133,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            134,
+            136,
+            137,
+            143
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu kich ban video, trich xuat voiceover cua tat ca cac canh.\n\nYeu cau:\n- Ghep thanh mot doan van LIEN MACH, doc duoc tu nhien nhu narrator chuyen nghiep\n- Giu nguyen ngon ngu goc\n- Them ngat nghi tu nhien giua cac canh (dung dau ... hoac dau ,)\n- Dieu chinh nhip doc: canh hook/climax nhanh hon, canh calm cham hon\n- CHI TRA VE VAN BAN THUAN TUY, khong format, khong danh so\n\nChu y: Van ban nay se duoc doc boi AI voice (ElevenLabs/ChatterBox),\nnen viet sao cho doc len tu nhien, tranh cau dai qua 30 tu.",
+        "Trich xuat voiceover:",
+        "",
+        4096,
+        0.7
+      ],
+      "title": "LLM: Extract Voiceover"
+    },
+    {
+      "id": 110,
+      "type": "easy showAnything",
+      "pos": [
+        800,
+        3200
+      ],
+      "size": [
+        280,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 134,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview Voiceover Text"
+    },
+    {
+      "id": 111,
+      "type": "ElevenLabsVoiceSelector",
+      "pos": [
+        200,
+        3550
+      ],
+      "size": [
+        350,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "voice",
+          "type": "ELEVENLABS_VOICE",
+          "links": [
+            135
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Daniel (male, british)"
+      ],
+      "title": "ElevenLabs Voice"
+    },
+    {
+      "id": 112,
+      "type": "ElevenLabsTextToSpeech",
+      "pos": [
+        200,
+        3660
+      ],
+      "size": [
+        450,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "voice",
+          "type": "ELEVENLABS_VOICE",
+          "link": 135
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 136
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            139,
+            141,
+            165,
+            169,
+            172
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0.5,
+        "auto",
+        "eleven_v3",
+        1.0,
+        0.75,
+        "",
+        42,
+        "mp3_44100_192"
+      ],
+      "title": "ElevenLabs TTS"
+    },
+    {
+      "id": 113,
+      "type": "Text Multiline",
+      "pos": [
+        200,
+        3840
+      ],
+      "size": [
+        450,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ELEVENLABS VOICES GOI Y:\n- Daniel (JBFqnCBsd6RMkjVDRZzb): narrator tram, cinematic\n- Rachel (21m00Tcm4TlvDq8ikWAM): nu, am ap, storytelling\n- Antoni (ErXwobaYiN019PkySvjV): nam, tre, energetic\n- Bella (EXAVITQu4vr4xnSDxMaL): nu, diu dang, intimate"
+      ],
+      "title": "Voice Guide",
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 114,
+      "type": "LoadAudio",
+      "pos": [
+        700,
+        3840
+      ],
+      "size": [
+        315,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            138
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "reference_voice.mp3"
+      ],
+      "title": "Ref Voice (for Cloning)"
+    },
+    {
+      "id": 115,
+      "type": "ChatterBoxVoiceTTS",
+      "pos": [
+        800,
+        3550
+      ],
+      "size": [
+        400,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 137
+        },
+        {
+          "name": "device",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "exaggeration",
+          "type": "FLOAT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        },
+        {
+          "name": "cfg_weight",
+          "type": "FLOAT",
+          "link": null
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": 138,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "generation_info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "auto",
+        0.5,
+        0.7,
+        0.5,
+        42
+      ],
+      "title": "ChatterBox TTS (Fallback)"
+    },
+    {
+      "id": 116,
+      "type": "AudioDurationNode",
+      "pos": [
+        1250,
+        3550
+      ],
+      "size": [
+        300,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 139
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "link": null
+        },
+        {
+          "name": "output_format",
+          "type": "COMBO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "duration_seconds",
+          "type": "FLOAT",
+          "links": [
+            140
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24.0,
+        "both"
+      ],
+      "title": "Audio Duration"
+    },
+    {
+      "id": 117,
+      "type": "easy showAnything",
+      "pos": [
+        1250,
+        3670
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 140,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Duration Info"
+    },
+    {
+      "id": 118,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1250,
+        3780
+      ],
+      "size": [
+        400,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 141,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24.0,
+        0,
+        "voiceover_output",
+        "audio/flac",
+        false,
+        true
+      ],
+      "title": "Save Voiceover"
+    },
+    {
+      "id": 119,
+      "type": "GetNode",
+      "pos": [
+        1200,
+        3140
+      ],
+      "size": [
+        200,
+        60
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            142
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "LLM_CONFIG"
+      ],
+      "title": "Get:LLM_CONFIG (SRT)"
+    },
+    {
+      "id": 120,
+      "type": "DirectLLMChat",
+      "pos": [
+        1250,
+        3200
+      ],
+      "size": [
+        550,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "LLM_CONFIG",
+          "link": 142
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "context_text",
+          "type": "STRING",
+          "link": 143,
+          "shape": 7
+        },
+        {
+          "name": "max_tokens",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            144
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "Tu van ban voiceover, tao file SRT subtitle.\nUoc luong thoi gian doc moi cau dua tren so tu (trung binh 150 tu/phut tieng Viet, 160 tu/phut tieng Anh).\n\nFormat SRT CHINH XAC:\n1\n00:00:00,000 --> 00:00:03,500\nCau dau tien cua voiceover\n\n2\n00:00:03,800 --> 00:00:07,200\nCau tiep theo\n\nQuy tac:\n- Moi subtitle toi da 2 dong, moi dong toi da 42 ky tu\n- Thoi gian hien thi toi thieu 1.5 giay, toi da 5 giay\n- Khoang cach giua 2 subtitle toi thieu 0.2 giay\n- Chia tai dau cau hoac dau phay, KHONG chia giua tu\n- Tong thoi gian phu hop voi video 60 giay",
+        "Tao SRT subtitle:",
+        "",
+        4096,
+        0.5
+      ],
+      "title": "LLM: Generate SRT"
+    },
+    {
+      "id": 121,
+      "type": "easy showAnything",
+      "pos": [
+        1850,
+        3200
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 144,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "False"
+      ],
+      "title": "Preview SRT"
+    },
+    {
+      "id": 122,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        4400
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            145
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00001.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 1 Video"
+    },
+    {
+      "id": 123,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        4680
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            146
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00002.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 2 Video"
+    },
+    {
+      "id": 124,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        4960
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            148
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00003.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 3 Video"
+    },
+    {
+      "id": 125,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        5240
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            150
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00004.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 4 Video"
+    },
+    {
+      "id": 126,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        5520
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            152
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00005.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 5 Video"
+    },
+    {
+      "id": 127,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        5800
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            154
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00006.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 6 Video"
+    },
+    {
+      "id": 128,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        6080
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            156
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00007.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 7 Video"
+    },
+    {
+      "id": 129,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        6360
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            158
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00008.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 8 Video"
+    },
+    {
+      "id": 130,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        6640
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            160
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00009.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 9 Video"
+    },
+    {
+      "id": 131,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        6920
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            162
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00010.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 10 Video"
+    },
+    {
+      "id": 132,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        7200
+      ],
+      "size": [
+        315,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            164
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "scene_video_00011.mp4",
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "title": "Scene 11 Video"
+    },
+    {
+      "id": 133,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        4680
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 145
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            147
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +2"
+    },
+    {
+      "id": 134,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        4960
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 147
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 148
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            149
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +3"
+    },
+    {
+      "id": 135,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        5240
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 149
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 150
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            151
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +4"
+    },
+    {
+      "id": 136,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        5520
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 151
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 152
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            153
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +5"
+    },
+    {
+      "id": 137,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        5800
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 153
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            155
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +6"
+    },
+    {
+      "id": 138,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        6080
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 155
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 156
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            157
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +7"
+    },
+    {
+      "id": 139,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        6360
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 157
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 158
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            159
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +8"
+    },
+    {
+      "id": 140,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        6640
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 159
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            161
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +9"
+    },
+    {
+      "id": 141,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        6920
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 161
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 162
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            163
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +10"
+    },
+    {
+      "id": 142,
+      "type": "ImageBatch",
+      "pos": [
+        380,
+        7200
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 163
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 164
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            166,
+            171
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Concat +11"
+    },
+    {
+      "id": 143,
+      "type": "Apply Whisper",
+      "pos": [
+        380,
+        7530
+      ],
+      "size": [
+        315,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 165
+        },
+        {
+          "name": "language",
+          "type": "STRING",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "whisper_alignment",
+          "type": "whisper_alignment",
+          "links": [
+            167
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "base"
+      ],
+      "title": "Whisper Transcribe"
+    },
+    {
+      "id": 144,
+      "type": "Add Subtitles To Frames",
+      "pos": [
+        380,
+        7710
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 166
+        },
+        {
+          "name": "alignment",
+          "type": "whisper_alignment",
+          "link": 167
+        },
+        {
+          "name": "font_color",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "font_family",
+          "type": "COMBO",
+          "link": null
+        },
+        {
+          "name": "font_size",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "x_position",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "y_position",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "center_x",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "center_y",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "video_fps",
+          "type": "FLOAT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            168,
+            170
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "subtitle_coord",
+          "type": "subtitle_coord",
+          "links": [],
+          "slot_index": 3
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "white",
+        "Roboto-Bold.ttf",
+        60,
+        100,
+        100,
+        true,
+        true,
+        24.0
+      ],
+      "title": "Burn-in Subtitles"
+    },
+    {
+      "id": 145,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1080,
+        4600
+      ],
+      "size": [
+        400,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 168
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 169,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24.0,
+        0,
+        "eStudio_final_with_subs",
+        "video/h264-mp4",
+        false,
+        true
+      ],
+      "title": "FINAL VIDEO (Subs + Voice)"
+    },
+    {
+      "id": 146,
+      "type": "PreviewImage",
+      "pos": [
+        1080,
+        4940
+      ],
+      "size": [
+        210,
+        50
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 170
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [],
+      "title": "Preview Final"
+    },
+    {
+      "id": 147,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1080,
+        5040
+      ],
+      "size": [
+        400,
+        250
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 171
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 172,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        24.0,
+        0,
+        "eStudio_raw_for_capcut",
+        "video/h264-mp4",
+        false,
+        true
+      ],
+      "title": "RAW VIDEO (for CapCut)"
+    },
+    {
+      "id": 148,
+      "type": "Text Multiline",
+      "pos": [
+        1080,
+        5330
+      ],
+      "size": [
+        450,
+        180
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "CAPCUT POST-PRODUCTION GUIDE:\n1. Import: eStudio_raw_for_capcut.mp4 + voiceover_output.flac\n2. Import SRT: Copy noi dung SRT tu Preview vao file .srt\n3. Music: Them nhac nen tu CapCut library (lofi, cinematic, ambient)\n4. SFX: Them sound effects theo tung canh (footsteps, rain, city)\n5. Pacing: Dieu chinh toc do tung clip (speed ramping)\n6. Transitions: Them hieu ung chuyen canh (dissolve, whip pan)\n7. Color grade: LUT cinematic (Teal & Orange, Warm Film)\n8. Export: 1080p H.264, bitrate 10-15 Mbps"
+      ],
+      "title": "CapCut Guide",
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      1,
+      1,
+      2,
+      1,
+      "CLIP"
+    ],
+    [
+      3,
+      7,
+      0,
+      11,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      4,
+      2,
+      0,
+      12,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      2,
+      1,
+      13,
+      0,
+      "CLIP"
+    ],
+    [
+      6,
+      1,
+      2,
+      14,
+      0,
+      "VAE"
+    ],
+    [
+      7,
+      3,
+      0,
+      15,
+      0,
+      "IPADAPTER"
+    ],
+    [
+      8,
+      6,
+      0,
+      16,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      9,
+      4,
+      0,
+      17,
+      0,
+      "WANVIDEOMODEL"
+    ],
+    [
+      10,
+      5,
+      0,
+      18,
+      0,
+      "WANVAE"
+    ],
+    [
+      11,
+      19,
+      0,
+      22,
+      2,
+      "STRING"
+    ],
+    [
+      12,
+      20,
+      0,
+      22,
+      3,
+      "STRING"
+    ],
+    [
+      13,
+      21,
+      0,
+      22,
+      4,
+      "STRING"
+    ],
+    [
+      14,
+      23,
+      0,
+      24,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      15,
+      22,
+      0,
+      24,
+      3,
+      "STRING"
+    ],
+    [
+      16,
+      24,
+      0,
+      25,
+      0,
+      "STRING"
+    ],
+    [
+      17,
+      22,
+      0,
+      26,
+      2,
+      "STRING"
+    ],
+    [
+      18,
+      24,
+      0,
+      26,
+      3,
+      "STRING"
+    ],
+    [
+      19,
+      27,
+      0,
+      28,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      20,
+      26,
+      0,
+      28,
+      3,
+      "STRING"
+    ],
+    [
+      21,
+      28,
+      0,
+      29,
+      0,
+      "STRING"
+    ],
+    [
+      22,
+      30,
+      0,
+      31,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      23,
+      28,
+      0,
+      31,
+      3,
+      "STRING"
+    ],
+    [
+      24,
+      31,
+      0,
+      32,
+      0,
+      "STRING"
+    ],
+    [
+      25,
+      28,
+      0,
+      33,
+      2,
+      "STRING"
+    ],
+    [
+      26,
+      31,
+      0,
+      33,
+      3,
+      "STRING"
+    ],
+    [
+      27,
+      34,
+      0,
+      35,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      28,
+      33,
+      0,
+      35,
+      3,
+      "STRING"
+    ],
+    [
+      29,
+      36,
+      0,
+      37,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      30,
+      33,
+      0,
+      37,
+      3,
+      "STRING"
+    ],
+    [
+      31,
+      38,
+      0,
+      39,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      32,
+      33,
+      0,
+      39,
+      3,
+      "STRING"
+    ],
+    [
+      33,
+      35,
+      0,
+      42,
+      0,
+      "STRING"
+    ],
+    [
+      34,
+      37,
+      0,
+      43,
+      0,
+      "STRING"
+    ],
+    [
+      35,
+      39,
+      0,
+      44,
+      0,
+      "STRING"
+    ],
+    [
+      36,
+      45,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      37,
+      46,
+      0,
+      48,
+      1,
+      "IMAGE"
+    ],
+    [
+      38,
+      48,
+      0,
+      49,
+      0,
+      "IMAGE"
+    ],
+    [
+      39,
+      47,
+      0,
+      49,
+      1,
+      "IMAGE"
+    ],
+    [
+      40,
+      49,
+      0,
+      50,
+      0,
+      "IMAGE"
+    ],
+    [
+      41,
+      51,
+      0,
+      55,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      42,
+      31,
+      0,
+      55,
+      3,
+      "STRING"
+    ],
+    [
+      43,
+      52,
+      0,
+      56,
+      0,
+      "CLIP"
+    ],
+    [
+      44,
+      55,
+      0,
+      56,
+      1,
+      "STRING"
+    ],
+    [
+      45,
+      52,
+      0,
+      57,
+      0,
+      "CLIP"
+    ],
+    [
+      46,
+      53,
+      0,
+      59,
+      0,
+      "MODEL"
+    ],
+    [
+      47,
+      56,
+      0,
+      59,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      48,
+      57,
+      0,
+      59,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      49,
+      58,
+      0,
+      59,
+      3,
+      "LATENT"
+    ],
+    [
+      50,
+      59,
+      0,
+      60,
+      0,
+      "LATENT"
+    ],
+    [
+      51,
+      54,
+      0,
+      60,
+      1,
+      "VAE"
+    ],
+    [
+      52,
+      60,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      53,
+      60,
+      0,
+      62,
+      0,
+      "IMAGE"
+    ],
+    [
+      54,
+      63,
+      0,
+      64,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      55,
+      33,
+      0,
+      64,
+      3,
+      "STRING"
+    ],
+    [
+      56,
+      64,
+      0,
+      65,
+      0,
+      "STRING"
+    ],
+    [
+      57,
+      73,
+      0,
+      74,
+      1,
+      "*"
+    ],
+    [
+      58,
+      35,
+      0,
+      74,
+      2,
+      "*"
+    ],
+    [
+      59,
+      37,
+      0,
+      74,
+      3,
+      "*"
+    ],
+    [
+      60,
+      39,
+      0,
+      74,
+      4,
+      "*"
+    ],
+    [
+      61,
+      74,
+      1,
+      75,
+      0,
+      "INT"
+    ],
+    [
+      62,
+      74,
+      2,
+      75,
+      1,
+      "STRING"
+    ],
+    [
+      63,
+      74,
+      1,
+      76,
+      0,
+      "INT"
+    ],
+    [
+      64,
+      74,
+      3,
+      76,
+      1,
+      "STRING"
+    ],
+    [
+      65,
+      74,
+      1,
+      77,
+      0,
+      "INT"
+    ],
+    [
+      66,
+      74,
+      4,
+      77,
+      1,
+      "STRING"
+    ],
+    [
+      67,
+      66,
+      0,
+      78,
+      0,
+      "MODEL"
+    ],
+    [
+      68,
+      69,
+      0,
+      78,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      69,
+      45,
+      0,
+      78,
+      2,
+      "IMAGE"
+    ],
+    [
+      70,
+      70,
+      0,
+      78,
+      5,
+      "CLIP_VISION"
+    ],
+    [
+      71,
+      78,
+      0,
+      79,
+      0,
+      "MODEL"
+    ],
+    [
+      72,
+      69,
+      0,
+      79,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      73,
+      60,
+      0,
+      79,
+      2,
+      "IMAGE"
+    ],
+    [
+      74,
+      70,
+      0,
+      79,
+      5,
+      "CLIP_VISION"
+    ],
+    [
+      75,
+      67,
+      0,
+      80,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      75,
+      0,
+      80,
+      1,
+      "STRING"
+    ],
+    [
+      77,
+      67,
+      0,
+      81,
+      0,
+      "CLIP"
+    ],
+    [
+      78,
+      64,
+      0,
+      81,
+      1,
+      "STRING"
+    ],
+    [
+      79,
+      67,
+      0,
+      82,
+      0,
+      "CLIP"
+    ],
+    [
+      80,
+      76,
+      0,
+      82,
+      1,
+      "STRING"
+    ],
+    [
+      81,
+      78,
+      0,
+      84,
+      0,
+      "MODEL"
+    ],
+    [
+      82,
+      80,
+      0,
+      84,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      83,
+      81,
+      0,
+      84,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      84,
+      83,
+      0,
+      84,
+      3,
+      "LATENT"
+    ],
+    [
+      85,
+      84,
+      0,
+      85,
+      0,
+      "LATENT"
+    ],
+    [
+      86,
+      68,
+      0,
+      85,
+      1,
+      "VAE"
+    ],
+    [
+      87,
+      85,
+      0,
+      86,
+      0,
+      "IMAGE"
+    ],
+    [
+      88,
+      86,
+      0,
+      87,
+      0,
+      "IMAGE"
+    ],
+    [
+      89,
+      86,
+      0,
+      88,
+      0,
+      "IMAGE"
+    ],
+    [
+      90,
+      85,
+      0,
+      89,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      68,
+      0,
+      89,
+      1,
+      "VAE"
+    ],
+    [
+      92,
+      78,
+      0,
+      90,
+      0,
+      "MODEL"
+    ],
+    [
+      93,
+      82,
+      0,
+      90,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      94,
+      81,
+      0,
+      90,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      95,
+      89,
+      0,
+      90,
+      3,
+      "LATENT"
+    ],
+    [
+      96,
+      90,
+      0,
+      91,
+      0,
+      "LATENT"
+    ],
+    [
+      97,
+      68,
+      0,
+      91,
+      1,
+      "VAE"
+    ],
+    [
+      98,
+      91,
+      0,
+      92,
+      0,
+      "IMAGE"
+    ],
+    [
+      99,
+      92,
+      0,
+      93,
+      0,
+      "IMAGE"
+    ],
+    [
+      100,
+      92,
+      0,
+      94,
+      0,
+      "IMAGE"
+    ],
+    [
+      101,
+      10,
+      0,
+      95,
+      0,
+      "INT"
+    ],
+    [
+      102,
+      86,
+      0,
+      95,
+      2,
+      "IMAGE"
+    ],
+    [
+      103,
+      92,
+      0,
+      95,
+      3,
+      "IMAGE"
+    ],
+    [
+      104,
+      75,
+      0,
+      96,
+      2,
+      "STRING"
+    ],
+    [
+      105,
+      77,
+      0,
+      96,
+      3,
+      "STRING"
+    ],
+    [
+      106,
+      70,
+      0,
+      97,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      107,
+      86,
+      0,
+      97,
+      1,
+      "IMAGE"
+    ],
+    [
+      108,
+      92,
+      0,
+      97,
+      2,
+      "IMAGE"
+    ],
+    [
+      109,
+      72,
+      0,
+      98,
+      0,
+      "WANVAE"
+    ],
+    [
+      110,
+      97,
+      0,
+      98,
+      1,
+      "WANVIDIMAGE_CLIPEMBEDS"
+    ],
+    [
+      111,
+      86,
+      0,
+      98,
+      2,
+      "IMAGE"
+    ],
+    [
+      112,
+      92,
+      0,
+      98,
+      3,
+      "IMAGE"
+    ],
+    [
+      113,
+      95,
+      1,
+      98,
+      5,
+      "MASK"
+    ],
+    [
+      114,
+      96,
+      0,
+      99,
+      0,
+      "STRING"
+    ],
+    [
+      115,
+      71,
+      0,
+      100,
+      0,
+      "WANVIDEOMODEL"
+    ],
+    [
+      116,
+      98,
+      0,
+      100,
+      1,
+      "WANVIDIMAGE_EMBEDS"
+    ],
+    [
+      117,
+      99,
+      0,
+      100,
+      2,
+      "WANVIDEOTEXTEMBEDS"
+    ],
+    [
+      118,
+      72,
+      0,
+      101,
+      0,
+      "WANVAE"
+    ],
+    [
+      119,
+      100,
+      0,
+      101,
+      1,
+      "LATENT"
+    ],
+    [
+      120,
+      101,
+      0,
+      102,
+      0,
+      "IMAGE"
+    ],
+    [
+      121,
+      102,
+      0,
+      103,
+      0,
+      "IMAGE"
+    ],
+    [
+      122,
+      102,
+      0,
+      104,
+      0,
+      "IMAGE"
+    ],
+    [
+      123,
+      74,
+      1,
+      105,
+      0,
+      "*"
+    ],
+    [
+      124,
+      105,
+      0,
+      106,
+      0,
+      "*"
+    ],
+    [
+      125,
+      41,
+      0,
+      106,
+      1,
+      "*"
+    ],
+    [
+      126,
+      74,
+      0,
+      107,
+      0,
+      "FLOW_CONTROL"
+    ],
+    [
+      127,
+      106,
+      0,
+      107,
+      1,
+      "BOOLEAN"
+    ],
+    [
+      128,
+      105,
+      0,
+      107,
+      2,
+      "*"
+    ],
+    [
+      129,
+      74,
+      2,
+      107,
+      3,
+      "*"
+    ],
+    [
+      130,
+      74,
+      3,
+      107,
+      4,
+      "*"
+    ],
+    [
+      131,
+      74,
+      4,
+      107,
+      5,
+      "*"
+    ],
+    [
+      132,
+      108,
+      0,
+      109,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      133,
+      28,
+      0,
+      109,
+      3,
+      "STRING"
+    ],
+    [
+      134,
+      109,
+      0,
+      110,
+      0,
+      "STRING"
+    ],
+    [
+      135,
+      111,
+      0,
+      112,
+      0,
+      "ELEVENLABS_VOICE"
+    ],
+    [
+      136,
+      109,
+      0,
+      112,
+      1,
+      "STRING"
+    ],
+    [
+      137,
+      109,
+      0,
+      115,
+      0,
+      "STRING"
+    ],
+    [
+      138,
+      114,
+      0,
+      115,
+      6,
+      "AUDIO"
+    ],
+    [
+      139,
+      112,
+      0,
+      116,
+      0,
+      "AUDIO"
+    ],
+    [
+      140,
+      116,
+      0,
+      117,
+      0,
+      "STRING"
+    ],
+    [
+      141,
+      112,
+      0,
+      118,
+      1,
+      "AUDIO"
+    ],
+    [
+      142,
+      119,
+      0,
+      120,
+      0,
+      "LLM_CONFIG"
+    ],
+    [
+      143,
+      109,
+      0,
+      120,
+      3,
+      "STRING"
+    ],
+    [
+      144,
+      120,
+      0,
+      121,
+      0,
+      "STRING"
+    ],
+    [
+      145,
+      122,
+      0,
+      133,
+      0,
+      "IMAGE"
+    ],
+    [
+      146,
+      123,
+      0,
+      133,
+      1,
+      "IMAGE"
+    ],
+    [
+      147,
+      133,
+      0,
+      134,
+      0,
+      "IMAGE"
+    ],
+    [
+      148,
+      124,
+      0,
+      134,
+      1,
+      "IMAGE"
+    ],
+    [
+      149,
+      134,
+      0,
+      135,
+      0,
+      "IMAGE"
+    ],
+    [
+      150,
+      125,
+      0,
+      135,
+      1,
+      "IMAGE"
+    ],
+    [
+      151,
+      135,
+      0,
+      136,
+      0,
+      "IMAGE"
+    ],
+    [
+      152,
+      126,
+      0,
+      136,
+      1,
+      "IMAGE"
+    ],
+    [
+      153,
+      136,
+      0,
+      137,
+      0,
+      "IMAGE"
+    ],
+    [
+      154,
+      127,
+      0,
+      137,
+      1,
+      "IMAGE"
+    ],
+    [
+      155,
+      137,
+      0,
+      138,
+      0,
+      "IMAGE"
+    ],
+    [
+      156,
+      128,
+      0,
+      138,
+      1,
+      "IMAGE"
+    ],
+    [
+      157,
+      138,
+      0,
+      139,
+      0,
+      "IMAGE"
+    ],
+    [
+      158,
+      129,
+      0,
+      139,
+      1,
+      "IMAGE"
+    ],
+    [
+      159,
+      139,
+      0,
+      140,
+      0,
+      "IMAGE"
+    ],
+    [
+      160,
+      130,
+      0,
+      140,
+      1,
+      "IMAGE"
+    ],
+    [
+      161,
+      140,
+      0,
+      141,
+      0,
+      "IMAGE"
+    ],
+    [
+      162,
+      131,
+      0,
+      141,
+      1,
+      "IMAGE"
+    ],
+    [
+      163,
+      141,
+      0,
+      142,
+      0,
+      "IMAGE"
+    ],
+    [
+      164,
+      132,
+      0,
+      142,
+      1,
+      "IMAGE"
+    ],
+    [
+      165,
+      112,
+      0,
+      143,
+      0,
+      "AUDIO"
+    ],
+    [
+      166,
+      142,
+      0,
+      144,
+      0,
+      "IMAGE"
+    ],
+    [
+      167,
+      143,
+      0,
+      144,
+      1,
+      "whisper_alignment"
+    ],
+    [
+      168,
+      144,
+      0,
+      145,
+      0,
+      "IMAGE"
+    ],
+    [
+      169,
+      112,
+      0,
+      145,
+      1,
+      "AUDIO"
+    ],
+    [
+      170,
+      144,
+      0,
+      146,
+      0,
+      "IMAGE"
+    ],
+    [
+      171,
+      142,
+      0,
+      147,
+      0,
+      "IMAGE"
+    ],
+    [
+      172,
+      112,
+      0,
+      147,
+      1,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "STEP 0: SHARED MODELS & CONFIG",
+      "bounding": [
+        -30,
+        -60,
+        1500,
+        620
+      ],
+      "color": "#A88"
+    },
+    {
+      "title": "STEP 1: SCRIPT (Concept -> Structure -> Full Script)",
+      "bounding": [
+        1770,
+        -280,
+        2200,
+        750
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "STEP 2: STORYBOARD -> PROMPTS (Start + End + Motion + Cinema)",
+      "bounding": [
+        3970,
+        -330,
+        1200,
+        1700
+      ],
+      "color": "#88A"
+    },
+    {
+      "title": "STEP 3: REFERENCE SHEETS (Character + Style + Negative)",
+      "bounding": [
+        5370,
+        -1320,
+        2100,
+        1020
+      ],
+      "color": "#a1309b"
+    },
+    {
+      "title": "STEP 4+5: SCENE PRODUCTION (Image + Video per Scene)",
+      "bounding": [
+        -30,
+        1420,
+        5100,
+        1200
+      ],
+      "color": "#3f789e"
+    },
+    {
+      "title": "STEP 6: VOICE (ElevenLabs + ChatterBox) + SRT Subtitles",
+      "bounding": [
+        -80,
+        3140,
+        2200,
+        860
+      ],
+      "color": "#b06634"
+    },
+    {
+      "title": "STEP 7: POST-PRODUCTION & FINAL ASSEMBLY (11 scenes)",
+      "bounding": [
+        -30,
+        4340,
+        1600,
+        3280
+      ],
+      "color": "#4a4"
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.25,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "version": 0.4
+}
