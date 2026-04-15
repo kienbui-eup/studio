@@ -341,13 +341,38 @@ copy_workflow() {
         cp "$wf" "${WORKFLOWS_DIR}/$(basename "$wf")"
         copied=$((copied+1))
     done
-    log "  [done] ${copied} workflow JSONs copied"
+    log "  [done] ${copied} workflow JSONs copied (available via Workflows menu)"
 
     # Generator scripts
     for gen in "${SCRIPT_DIR}"/generate_video_workflow*.py; do
         [ -f "$gen" ] || continue
         cp "$gen" "${COMFYUI_DIR}/$(basename "$gen")"
     done
+
+    # ----- Blank-canvas startup: don't auto-load any workflow -----
+    local user_default_dir="${COMFYUI_DIR}/user/default"
+    mkdir -p "${user_default_dir}"
+
+    # Clear any persisted "last opened workflow" state so frontend starts blank
+    rm -f "${user_default_dir}/workflow.json" \
+          "${user_default_dir}/comfy.templates.json" 2>/dev/null || true
+
+    # Write settings that suppress welcome/template dialogs on first load
+    local settings_file="${user_default_dir}/comfy.settings.json"
+    if [ ! -f "${settings_file}" ]; then
+        cat > "${settings_file}" <<'SETTINGS'
+{
+    "Comfy.TutorialCompleted": true,
+    "Comfy.Workflow.AutoSave": "off",
+    "Comfy.Workflow.ConfirmDelete": false,
+    "Comfy.Workflow.WorkflowTabsPosition": "Topbar",
+    "Comfy.Workflow.OpenDefaultWorkflow": false
+}
+SETTINGS
+        log "  [done] wrote blank-canvas settings → ${settings_file}"
+    else
+        log "  [skip] ${settings_file} already exists (keeping user settings)"
+    fi
 }
 
 # =========================================================================
