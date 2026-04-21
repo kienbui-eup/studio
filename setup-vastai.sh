@@ -493,8 +493,8 @@ start_comfyui() {
 
     cd "${COMFYUI_DIR}"
     # Performance flags for RTX 6000 Ada (48GB VRAM):
-    #   --gpu-only              keep text encoders / CLIP / VAE on GPU
-    #   --highvram              don't offload models to CPU between runs
+    #   --gpu-only              keep everything (text encoders/CLIP/VAE/unet) on GPU,
+    #                           no offload to CPU between runs (supersedes --highvram)
     #   --cache-lru 100         cache up to 100 node results (VRAM-backed)
     #   --fast ...              safe FP16 accumulation + cuBLAS + cuDNN autotune
     #   --reserve-vram 0.5      only reserve 0.5GB for OS
@@ -510,7 +510,6 @@ start_comfyui() {
         --port "${COMFYUI_PORT}" \
         --enable-cors-header \
         --gpu-only \
-        --highvram \
         --cache-lru 100 \
         --fast fp16_accumulation cublas_ops autotune \
         --reserve-vram 0.5 \
