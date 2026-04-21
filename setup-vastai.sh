@@ -7,7 +7,8 @@
 # Expected runtime: ~12 minutes (vs ~30 minutes in v1)
 #
 # Usage:
-#   bash setup-vastai.sh                  # Full setup
+#   OPENAI_API_KEY=sk-xxx GEMINI_API_KEY=AIza-xxx bash setup-vastai.sh   # Full setup with keys
+#   bash setup-vastai.sh                  # Full setup (keys from env or set later)
 #   bash setup-vastai.sh --skip-models    # Skip large model downloads
 #   bash setup-vastai.sh --skip-nodes     # Skip custom node cloning
 #   bash setup-vastai.sh --only-models    # Only download models
@@ -29,6 +30,10 @@ NGINX_PORT=8288
 COMFYUI_PORT=8188
 NGINX_USER="admin"
 NGINX_PASS="EupStudio2026@"
+
+# API keys — set via env before running, or edit here
+OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+GEMINI_API_KEY="${GEMINI_API_KEY:-}"
 
 # Parallelism controls
 CLONE_JOBS=8          # Concurrent git clones
@@ -91,12 +96,18 @@ CUSTOM_NODES=(
 # Remove or comment lines you don't need for faster setup.
 # ---------------------------------------------------------------------------
 MODELS=(
-    # SDXL base
-    "https://civitai.com/api/download/models/344487|checkpoints|realvisxlV50_v50LightningBakedvae.safetensors"
+    # SDXL cartoon-capable base (DreamShaperXL Turbo v2.1 — DPM++ SDE optimized)
+    "https://civitai.com/api/download/models/351306|checkpoints|dreamshaperXL_v21TurboDPMSDE.safetensors"
 
     # IP-Adapter Plus SDXL
     "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors|ipadapter|ip-adapter-plus_sdxl_vit-h.safetensors"
     "https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors|clip_vision|clip_vision_h.safetensors"
+
+    # ControlNet Canny SDXL (for pose/structure guidance, ~2.5GB)
+    "https://huggingface.co/xinsir/controlnet-canny-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors|controlnet|controlnet-canny-sdxl.safetensors"
+
+    # Face detector for FaceDetailer (~50MB)
+    "https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt|ultralytics/bbox|face_yolov8m.pt"
 
     # WanVideo I2V 14B FP8 (main, ~14GB)
     "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors|diffusion_models|wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors"
@@ -239,6 +250,7 @@ install_node_requirements() {
     # Add extra deps not in any requirements.txt
     cat >> "$combined" <<'EOF'
 conformer
+sageattention
 EOF
 
     # Sort + unique to reduce duplicate resolution work
@@ -440,21 +452,72 @@ NGINX_CONF
 }
 
 # =========================================================================
-# STEP 10: Start ComfyUI
+# STEP 10: Configure API keys in env
+# =========================================================================
+setup_api_keys() {
+    log "STEP 10: Configure API keys..."
+    # Write to /etc/environment so PAM loads keys for non-interactive shells
+    # (ComfyUI started via nohup/SSH command is non-interactive — .bashrc is skipped).
+    for var in OPENAI_API_KEY GEMINI_API_KEY; do
+        local val="${!var}"
+        if [ -n "$val" ] && ! grep -q "^${var}=" /etc/environment 2>/dev/null; then
+            echo "${var}=\"${val}\"" >> /etc/environment
+            log "  [set] ${var} in /etc/environment (${#val} chars)"
+        elif [ -n "$val" ]; then
+            log "  [skip] ${var} already in /etc/environment"
+        else
+            warn "${var} not provided — LLM nodes will fail without it"
+        fi
+        # Also mirror to /root/.bashrc for interactive SSH sessions
+        if [ -n "$val" ] && ! grep -q "^export ${var}=" /root/.bashrc 2>/dev/null; then
+            echo "export ${var}=\"${val}\"" >> /root/.bashrc
+        fi
+    done
+}
+
+# =========================================================================
+# STEP 11: Start ComfyUI
 # =========================================================================
 start_comfyui() {
-    log "STEP 10: Start ComfyUI..."
+    log "STEP 11: Start ComfyUI..."
 
     if pgrep -f "main.py.*--listen" > /dev/null 2>&1; then
         warn "ComfyUI already running — skip"
         return
     fi
 
+    # Load env vars from /etc/environment for non-interactive shells (.bashrc has PS1 guard)
+    if [ -f /etc/environment ]; then
+        set +u; set -a; . /etc/environment; set +a; set -u
+    fi
+
     cd "${COMFYUI_DIR}"
-    nohup python main.py \
+    # Performance flags for RTX 6000 Ada (48GB VRAM):
+    #   --gpu-only              keep text encoders / CLIP / VAE on GPU
+    #   --highvram              don't offload models to CPU between runs
+    #   --cache-lru 100         cache up to 100 node results (VRAM-backed)
+    #   --fast ...              safe FP16 accumulation + cuBLAS + cuDNN autotune
+    #   --reserve-vram 0.5      only reserve 0.5GB for OS
+    #   --bf16-vae              VAE in bf16 (faster, no black-image upcasting)
+    #   --fp16-text-enc         text encoder fp16 (umT5-xxl shrinks ~11→6GB)
+    #   --use-sage-attention    SageAttention2 — 30-40% faster than SDPA for WanVideo
+    #   --async-offload 4       4 streams for async weight transfer
+    nohup env \
+        OPENAI_API_KEY="${OPENAI_API_KEY:-}" \
+        GEMINI_API_KEY="${GEMINI_API_KEY:-}" \
+        python main.py \
         --listen 127.0.0.1 \
         --port "${COMFYUI_PORT}" \
         --enable-cors-header \
+        --gpu-only \
+        --highvram \
+        --cache-lru 100 \
+        --fast fp16_accumulation cublas_ops autotune \
+        --reserve-vram 0.5 \
+        --bf16-vae \
+        --fp16-text-enc \
+        --use-sage-attention \
+        --async-offload 4 \
         > /workspace/comfyui.log 2>&1 &
 
     local pid=$!
@@ -504,6 +567,7 @@ main() {
     upload_input_assets
     copy_workflow
     configure_nginx
+    setup_api_keys
 
     if [ "$NO_START" = false ]; then
         start_comfyui
